@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bm5fo0cn3kop6"]
+
+[ext_resource type="Texture2D" uid="uid://cufecf4ux002q" path="res://addons/Tiny Swords/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="1_f8y0o"]
+[ext_resource type="Script" path="res://scripts/mechanics/fallow_player.gd" id="1_rj7cq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kucjs"]
+atlas = ExtResource("1_f8y0o")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tru8w"]
+atlas = ExtResource("1_f8y0o")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6no4"]
+atlas = ExtResource("1_f8y0o")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo2p4"]
+atlas = ExtResource("1_f8y0o")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12bpy"]
+atlas = ExtResource("1_f8y0o")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhfva"]
+atlas = ExtResource("1_f8y0o")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rcrms"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kucjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tru8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6no4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo2p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12bpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhfva")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2yu7j"]
+radius = 17.0
+height = 52.0
+
+[node name="Pawn" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_rj7cq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -28)
+sprite_frames = SubResource("SpriteFrames_rcrms")
+autoplay = "default"
+frame = 5
+frame_progress = 0.739759
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("CapsuleShape2D_2yu7j")

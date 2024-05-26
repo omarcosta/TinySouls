@@ -20,6 +20,7 @@ var target_velocity: Vector2 = Vector2(0 , 0)
 
 func _process(delta) -> void:
 	read_input_moviment() # Obter o input de movimento
+	GameManager.player_position = position
 	rotate_sprite() # Change sprite side
 	default_animations() # # Animações padrão do player
 	update_atk_cooldown(delta) # Temporizador de ATK
@@ -53,10 +54,11 @@ func read_input_moviment() -> void:
 
 
 func rotate_sprite() -> void:
-	if input_direction.x > 0:
-		sprite_player.flip_h = false
-	elif input_direction.x < 0:
-		sprite_player.flip_h = true
+	if !is_attacking:
+		if input_direction.x > 0:
+			sprite_player.flip_h = false
+		elif input_direction.x < 0:
+			sprite_player.flip_h = true
 
 
 func default_animations() -> void: 
