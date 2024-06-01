@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bm5fo0cn3kop6"]
+[gd_scene load_steps=13 format=3 uid="uid://bm5fo0cn3kop6"]
 
+[ext_resource type="Script" path="res://scripts/classes/enemy.gd" id="1_5vost"]
 [ext_resource type="Texture2D" uid="uid://cufecf4ux002q" path="res://addons/Tiny Swords/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="1_f8y0o"]
 [ext_resource type="Script" path="res://scripts/mechanics/fallow_player.gd" id="1_rj7cq"]
+[ext_resource type="PackedScene" uid="uid://c3nldrkhtbqfx" path="res://scenes/resources/death.tscn" id="2_5k1nh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kucjs"]
 atlas = ExtResource("1_f8y0o")
@@ -57,9 +59,13 @@ animations = [{
 radius = 17.0
 height = 52.0
 
-[node name="Pawn" type="CharacterBody2D"]
+[node name="Pawn" type="CharacterBody2D" groups=["enemies"]]
 motion_mode = 1
-script = ExtResource("1_rj7cq")
+script = ExtResource("1_5vost")
+death_prefab = ExtResource("2_5k1nh")
+health = 5
+damage = 5
+speed = 1.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -28)
@@ -71,3 +77,8 @@ frame_progress = 0.739759
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -25)
 shape = SubResource("CapsuleShape2D_2yu7j")
+
+[node name="===== Scripts =====" type="Node" parent="."]
+
+[node name="FollowPlayer" type="Node" parent="."]
+script = ExtResource("1_rj7cq")

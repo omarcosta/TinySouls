@@ -399,7 +399,6 @@ _data = {
 z_index = 1
 script = ExtResource("1_t6sr0")
 death_prefab = ExtResource("2_dsx3f")
-health = 45
 
 [node name="HitArea" type="Area2D" parent="."]
 

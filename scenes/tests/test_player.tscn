@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlwnjmowunxwc"]
+[gd_scene load_steps=9 format=3 uid="uid://dlwnjmowunxwc"]
 
 [ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="1_8da6c"]
 [ext_resource type="Texture2D" uid="uid://cpjcxggv80v3i" path="res://addons/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="1_cy1g5"]
 [ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="3_tudjb"]
+[ext_resource type="Script" path="res://scripts/mechanics/cam_follow_playert.gd" id="4_i82er"]
+[ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/hud.tscn" id="5_ajk41"]
+[ext_resource type="PackedScene" uid="uid://tn2fbln46ngl" path="res://scenes/resources/meat.tscn" id="6_ij3qo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_06vit"]
 texture = ExtResource("1_cy1g5")
@@ -1607,13 +1610,33 @@ layer_3/modulate = Color(1, 1, 1, 0.101961)
 layer_3/tile_data = PackedInt32Array(393223, 393216, 1, 393224, 393216, 1, 327688, 393216, 1, 327687, 393216, 1, 327686, 393216, 1, 393222, 393216, 1, 131080, 393216, 1, 262156, 393216, 1, 327692, 393216, 1, 393229, 393216, 1, 458765, 393216, 1, 524302, 393216, 1, 589838, 393216, 1, 589836, 393216, 1, 589835, 393216, 1, 655371, 393216, 1, 655370, 393216, 1, 655369, 393216, 1, 655368, 393216, 1, 720904, 393216, 1, 720903, 393216, 1, 458756, 393216, 1, 458757, 393216, 1, 458758, 393216, 1, 458759, 393216, 1, 524295, 393216, 1, 524296, 393216, 1, 524297, 393216, 1, 524298, 393216, 1, 589834, 393216, 1, 786442, 393216, 1, 851979, 393216, 1, 917515, 393216, 1, 917516, 393216, 1, 983052, 393216, 1, 1048588, 393216, 1, 1048587, 393216, 1, 1114123, 393216, 1, 1114122, 393216, 1, 1114121, 393216, 1, 1114120, 393216, 1, 786436, 393216, 1, 786435, 393216, 1, 851971, 393216, 1, 917507, 393216, 1, 983043, 393216, 1, 1048579, 393216, 1, 1114115, 393216, 1, 1114116, 393216, 1, 1114117, 393216, 1, 1114118, 393216, 1, 1114119, 393216, 1, 1048583, 393216, 1, 983045, 393216, 1, 983044, 393216, 1, 1048580, 393216, 1, 1048578, 393216, 1, 1114114, 393216, 1, 1179649, 393216, 1, 262152, 393216, 1, 262151, 393216, 1, 262150, 393216, 1, 262149, 393216, 1, 262148, 393216, 1, 262147, 393216, 1, 262146, 393216, 1, 196610, 393216, 1, 131074, 393216, 1, 65539, 393216, 1, 65540, 393216, 1, 65541, 393216, 1, 65542, 393216, 1, 131078, 393216, 1, 196614, 393216, 1, 65546, 393216, 1, 11, 393216, 1, 12, 393216, 1, 13, 393216, 1, 131087, 393216, 1, 131086, 393216, 1, 131085, 393216, 1, 262158, 393216, 1, 327694, 393216, 1, 393230, 393216, 1, 458766, 393216, 1, 655362, 393216, 1, 589825, 393216, 1, 524289, 393216, 1, 458753, 393216, 1, 393217, 393216, 1, 393218, 393216, 1, 327682, 393216, 1, 327683, 393216, 1, 393226, 393216, 1, 458762, 393216, 1, 458763, 393216, 1, 458764, 393216, 1, 524301, 393216, 1)
 
 [node name="Pawn" parent="." instance=ExtResource("3_tudjb")]
-position = Vector2(367.638, 251.78)
+position = Vector2(827.832, 524.919)
 
 [node name="Pawn2" parent="." instance=ExtResource("3_tudjb")]
-position = Vector2(482.201, 383.819)
+position = Vector2(245.955, 275.728)
 
 [node name="Pawn3" parent="." instance=ExtResource("3_tudjb")]
-position = Vector2(737.864, 266.019)
+position = Vector2(827.832, 159.871)
 
 [node name="Pawn4" parent="." instance=ExtResource("3_tudjb")]
-position = Vector2(637.54, 325.566)
+position = Vector2(579.935, 1057.61)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("4_i82er")
+
+[node name="HUD" parent="." instance=ExtResource("5_ajk41")]
+
+[node name="Meat" parent="." instance=ExtResource("6_ij3qo")]
+position = Vector2(246.602, 1000)
+
+[node name="Meat2" parent="." instance=ExtResource("6_ij3qo")]
+position = Vector2(152.751, 1139.16)
+
+[node name="Meat3" parent="." instance=ExtResource("6_ij3qo")]
+position = Vector2(840.777, 1121.68)
+
+[node name="Meat4" parent="." instance=ExtResource("6_ij3qo")]
+position = Vector2(741.748, 1005.83)
+
+[node name="Meat5" parent="." instance=ExtResource("6_ij3qo")]
+position = Vector2(614.24, 1144.34)
