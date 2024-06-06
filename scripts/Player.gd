@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var sprite_player: Sprite2D = $Sprite
 @onready var sword_area: Area2D = $SwordArea
 @onready var hit_area: Area2D = $HitArea
+
 @export var death_prefab: PackedScene
 
 @export_category("Player") # Caracteristicas do player
@@ -19,6 +20,11 @@ extends CharacterBody2D
 @export_range(1, 99) var attack_points: int = 2
 @export var speed: float = 2.5
 
+@export_group("Skills")
+@export var skill_a_scene: PackedScene
+@export var skill_a_damage: int = 10
+@export var skill_a_interval: float = 10.0
+
 @export_group("Balancing coefficients") # Coeficientes
 @export_range(0,1) var coeff_velocity_atk: float = 0.25 # Redução de VEL ao ATK
 @export_range(1, 2.5) var coeff_velocity_run: float = 1.35 # Redução de VEL ao RUN
@@ -28,8 +34,10 @@ extends CharacterBody2D
 var is_attacking: bool = false # O jogador esta atacando
 var is_running: bool = false # O Jogar está correndo
 var is_hit: bool = false # O jogador está levando dano
+var is_available_skill_a = true # Habilidade está disponivel para uso
 var attacking_cooldown: float = 0.0 # Contador de tempo para atacar
 var hit_cooldown: float = 0.0 # Contador de tempo para levar dano
+var skill_a_cooldown: float = 0.0 # Contador de tempo para usar habilidade
 var attacking_orientation: String = "RIGHT" # Define qual o lado do ataque: right, left, up, down
 var input_direction: Vector2 = Vector2(0 , 0)
 var target_velocity: Vector2 = Vector2(0 , 0)
@@ -45,6 +53,7 @@ func _process(delta) -> void:
 	default_animations() # # Animações padrão do player
 	update_atk_cooldown(delta) # Temporizador de ATK
 	update_hit_cooldown(delta) # Teporizador de levar dano
+	update_skill_a_cooldown(delta) # Temporizador da habilidade A
 	# Call ATK Func
 	if Input.is_action_just_pressed("atk_waek"):
 		attack("w")
@@ -133,6 +142,21 @@ func update_hit_cooldown(delta: float)-> void:
 		is_hit = false
 
 
+func update_skill_a_cooldown(delta: float) -> void:
+	#Atualizar temporizador
+	skill_a_cooldown -= delta
+	if skill_a_cooldown > 0: return
+	is_available_skill_a = true
+	skill_a_cooldown = skill_a_interval
+	
+	# Ivocar skill
+	var skill_a = skill_a_scene.instantiate()
+	skill_a.damage_amount = skill_a_damage
+	add_child(skill_a)
+	
+
+
+
 func deal_damage_to_enemies() -> void:
 	var bodies = sword_area.get_overlapping_bodies() # Obtem todos os corpos f[isicos na area. Pode ser mudado para pegar a area
 	for body in bodies:
@@ -190,12 +214,14 @@ func reaction_to_damage() -> void:
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
 
+
 func game_over() -> void: 
 	if health > 0: 
 		return
 	GameManager.player_life_points = health
 	GameManager.gameover = true
 	die()
+
 
 func helth_regenerator_by_resources(amount: int) -> int:
 	if health + amount < max_health:
@@ -204,3 +230,4 @@ func helth_regenerator_by_resources(amount: int) -> int:
 		health = max_health
 	print("O Jogador tem: ", health)
 	return health
+

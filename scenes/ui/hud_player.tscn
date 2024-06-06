@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4frpnsrpqf56"]
+
+[ext_resource type="Script" path="res://scripts/UI/ui_player.gd" id="1_0dhej"]
+[ext_resource type="Texture2D" uid="uid://bsa178lmnj7rf" path="res://addons/HP_Bar/bg.png" id="2_47e6f"]
+[ext_resource type="Texture2D" uid="uid://bbs2kgb8chsjm" path="res://addons/HP_Bar/red.png" id="3_y3kft"]
+[ext_resource type="Texture2D" uid="uid://cbxrvfqujjuci" path="res://addons/HP_Bar/blue.png" id="4_laffs"]
+[ext_resource type="Texture2D" uid="uid://bv14uc0sctxs5" path="res://addons/HP_Bar/green.png" id="5_cb0qa"]
+
+[node name="HUDPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 417.0
+offset_bottom = 110.0
+script = ExtResource("1_0dhej")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 48.0
+scale = Vector2(0.9, 0.9)
+value = 100.0
+texture_under = ExtResource("2_47e6f")
+texture_progress = ExtResource("3_y3kft")
+
+[node name="MagicBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+offset_top = 34.0
+offset_right = 256.0
+offset_bottom = 82.0
+scale = Vector2(0.8, 0.8)
+value = 100.0
+texture_under = ExtResource("2_47e6f")
+texture_progress = ExtResource("4_laffs")
+
+[node name="StaminaBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+offset_top = 61.0
+offset_right = 256.0
+offset_bottom = 109.0
+scale = Vector2(0.8, 0.8)
+value = 100.0
+texture_under = ExtResource("2_47e6f")
+texture_progress = ExtResource("5_cb0qa")

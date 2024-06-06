@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://dajbasyr011gj"]
+
+[ext_resource type="Script" path="res://scripts/UI/ui_waves.gd" id="1_dvcrq"]
+[ext_resource type="Texture2D" uid="uid://c17j4rrs562bv" path="res://addons/Wenrexa Interface UI KIT/PNG/Icons/Circle02.png" id="2_2yvpc"]
+[ext_resource type="FontFile" uid="uid://bjadthcly4wt3" path="res://addons/fonts/caslon-antique.bold/caslon-antique.bold.ttf" id="3_i43hn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_miy3p"]
+texture = ExtResource("2_2yvpc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_bey7w"]
+font = ExtResource("3_i43hn")
+font_size = 45
+font_color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hnein"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="HudWaves" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("1_dvcrq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_miy3p")
+
+[node name="CountWavesLabel" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "99"
+label_settings = SubResource("LabelSettings_bey7w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -50.0
+offset_right = 24.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "waves"
+label_settings = SubResource("LabelSettings_hnein")
+horizontal_alignment = 1
+vertical_alignment = 1

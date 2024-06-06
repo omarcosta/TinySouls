@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=3 uid="uid://4faydfy557bu"]
+
+[ext_resource type="Script" path="res://scripts/UI/view_damage.gd" id="1_3gdgk"]
+[ext_resource type="FontFile" uid="uid://bjadthcly4wt3" path="res://addons/fonts/caslon-antique.bold/caslon-antique.bold.ttf" id="2_wjelv"]
+
+[sub_resource type="Animation" id="Animation_cdo1u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.75, 0.75)]
+}
+
+[sub_resource type="Animation" id="Animation_ojlm3"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.225313, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, -15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(4.75683, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.8025, 2.2974),
+"update": 2,
+"values": [Vector2(0.75, 0.75), Vector2(1.2, 1.2)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1icif"]
+_data = {
+"RESET": SubResource("Animation_cdo1u"),
+"default": SubResource("Animation_ojlm3")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_r08ri"]
+font = ExtResource("2_wjelv")
+font_size = 28
+font_color = Color(0.992157, 0.992157, 0.992157, 1)
+outline_size = 6
+outline_color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="Damage" type="Node2D"]
+script = ExtResource("1_3gdgk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1icif")
+}
+autoplay = "default"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(0.75, 0.75)
+
+[node name="Label" type="Label" parent="Node2D"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "999
+"
+label_settings = SubResource("LabelSettings_r08ri")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcjbg8xql7jbo"]
+
+[ext_resource type="Script" path="res://scripts/mechanics/cam_follow_playert.gd" id="1_m4g05"]
+[ext_resource type="Texture2D" uid="uid://fqjcx57qsvlu" path="res://addons/Tiny Swords/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="1_r26g5"]
+[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="2_5xpud"]
+[ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="3_4a4sv"]
+[ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/ui/hud.tscn" id="5_1nntd"]
+[ext_resource type="PackedScene" uid="uid://tn2fbln46ngl" path="res://scenes/resources/meat.tscn" id="6_yn84p"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(612, 388)
+script = ExtResource("1_m4g05")
+
+[node name="CastleBlue3" type="Sprite2D" parent="."]
+position = Vector2(890, 94)
+texture = ExtResource("1_r26g5")
+
+[node name="CastleBlue" type="Sprite2D" parent="."]
+position = Vector2(377, 95)
+texture = ExtResource("1_r26g5")
+
+[node name="CastleBlue2" type="Sprite2D" parent="."]
+position = Vector2(634, 125)
+texture = ExtResource("1_r26g5")
+
+[node name="Player" parent="." instance=ExtResource("2_5xpud")]
+position = Vector2(288, 455)
+
+[node name="Pawn" parent="." instance=ExtResource("3_4a4sv")]
+position = Vector2(917, 481)
+scale = Vector2(1.5, 1.5)
+health = 20
+speed = 0.5
+
+[node name="Pawn2" parent="." instance=ExtResource("3_4a4sv")]
+position = Vector2(781, 387)
+
+[node name="Pawn3" parent="." instance=ExtResource("3_4a4sv")]
+position = Vector2(786, 543)
+
+[node name="HUD" parent="." instance=ExtResource("5_1nntd")]
+
+[node name="Meat" parent="." instance=ExtResource("6_yn84p")]
+position = Vector2(471, 548)
+
+[node name="Meat2" parent="." instance=ExtResource("6_yn84p")]
+position = Vector2(468, 429)
+
+[node name="Meat3" parent="." instance=ExtResource("6_yn84p")]
+position = Vector2(545, 482)
