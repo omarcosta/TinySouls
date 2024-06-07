@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlwnjmowunxwc"]
+[gd_scene load_steps=9 format=3 uid="uid://dlwnjmowunxwc"]
 
-[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="1_8da6c"]
 [ext_resource type="Texture2D" uid="uid://cpjcxggv80v3i" path="res://addons/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="1_cy1g5"]
 [ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="3_tudjb"]
 [ext_resource type="Script" path="res://scripts/mechanics/cam_follow_playert.gd" id="4_i82er"]
 [ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/ui/hud.tscn" id="5_ajk41"]
 [ext_resource type="PackedScene" uid="uid://tn2fbln46ngl" path="res://scenes/resources/meat.tscn" id="6_ij3qo"]
-[ext_resource type="PackedScene" uid="uid://cv2teep1sc1js" path="res://scenes/player_2.tscn" id="7_swtio"]
+[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="7_swtio"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_06vit"]
 texture = ExtResource("1_cy1g5")
@@ -1627,8 +1626,8 @@ position = Vector2(741.748, 1005.83)
 [node name="Meat5" parent="." instance=ExtResource("6_ij3qo")]
 position = Vector2(614.24, 1144.34)
 
-[node name="Player" parent="." instance=ExtResource("1_8da6c")]
-position = Vector2(167.638, 194.175)
+[node name="Player" parent="." instance=ExtResource("7_swtio")]
+position = Vector2(181.23, 354.045)
 
 [node name="Pawn" parent="." instance=ExtResource("3_tudjb")]
 position = Vector2(495.793, 183.172)
@@ -1638,6 +1637,3 @@ position = Vector2(558.576, 307.443)
 
 [node name="Pawn3" parent="." instance=ExtResource("3_tudjb")]
 position = Vector2(420.065, 363.107)
-
-[node name="Player2" parent="." instance=ExtResource("7_swtio")]
-position = Vector2(226.537, 440.129)

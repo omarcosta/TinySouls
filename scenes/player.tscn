@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_t6sr0"]
 [ext_resource type="PackedScene" uid="uid://c3nldrkhtbqfx" path="res://scenes/resources/death.tscn" id="2_dsx3f"]
 [ext_resource type="Texture2D" uid="uid://crms0l7y44ehq" path="res://Warrior_red.png" id="2_sa5wr"]
-[ext_resource type="PackedScene" uid="uid://dky4hcknkynas" path="res://scenes/magics/aura_of_light.tscn" id="3_mx628"]
+[ext_resource type="PackedScene" uid="uid://dky4hcknkynas" path="res://scenes/magics/warriors_roar.tscn" id="3_mx628"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ca1di"]
 radius = 36.7696
@@ -401,6 +401,7 @@ z_index = 10
 script = ExtResource("1_t6sr0")
 death_prefab = ExtResource("2_dsx3f")
 health = 45
+speed = 2.0
 skill_a_scene = ExtResource("3_mx628")
 
 [node name="HitArea" type="Area2D" parent="."]

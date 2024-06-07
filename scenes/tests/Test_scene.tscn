@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcjbg8xql7jbo"]
+[gd_scene load_steps=8 format=3 uid="uid://bcjbg8xql7jbo"]
 
 [ext_resource type="Script" path="res://scripts/mechanics/cam_follow_playert.gd" id="1_m4g05"]
 [ext_resource type="Texture2D" uid="uid://fqjcx57qsvlu" path="res://addons/Tiny Swords/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="1_r26g5"]
 [ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="2_5xpud"]
 [ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="3_4a4sv"]
+[ext_resource type="PackedScene" uid="uid://c1lt5mpy4st3i" path="res://scenes/magics/explosive_barrel.tscn" id="4_hr6wv"]
 [ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/ui/hud.tscn" id="5_1nntd"]
 [ext_resource type="PackedScene" uid="uid://tn2fbln46ngl" path="res://scenes/resources/meat.tscn" id="6_yn84p"]
 
@@ -27,6 +28,8 @@ texture = ExtResource("1_r26g5")
 
 [node name="Player" parent="." instance=ExtResource("2_5xpud")]
 position = Vector2(288, 455)
+skill_a_scene = ExtResource("4_hr6wv")
+skill_a_damage = 50
 
 [node name="Pawn" parent="." instance=ExtResource("3_4a4sv")]
 position = Vector2(917, 481)

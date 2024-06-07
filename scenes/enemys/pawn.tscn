@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cufecf4ux002q" path="res://addons/Tiny Swords/Factions/Knights/Troops/Pawn/Red/Pawn_Red.png" id="1_f8y0o"]
 [ext_resource type="Script" path="res://scripts/mechanics/fallow_player.gd" id="1_rj7cq"]
 [ext_resource type="PackedScene" uid="uid://c3nldrkhtbqfx" path="res://scenes/resources/death.tscn" id="2_5k1nh"]
-[ext_resource type="PackedScene" uid="uid://4faydfy557bu" path="res://scenes/damage_ui/default_damage.tscn" id="2_eca4h"]
+[ext_resource type="PackedScene" uid="uid://4faydfy557bu" path="res://scenes/misc/default_damage.tscn" id="2_etbwc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kucjs"]
 atlas = ExtResource("1_f8y0o")
@@ -66,7 +66,7 @@ script = ExtResource("1_5vost")
 health = 5
 damage = 5
 speed = 0.7
-view_damage_prefab = ExtResource("2_eca4h")
+view_damage_prefab = ExtResource("2_etbwc")
 death_prefab = ExtResource("2_5k1nh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

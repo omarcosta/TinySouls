@@ -152,7 +152,8 @@ func update_skill_a_cooldown(delta: float) -> void:
 	# Ivocar skill
 	var skill_a = skill_a_scene.instantiate()
 	skill_a.damage_amount = skill_a_damage
-	add_child(skill_a)
+	skill_a.global_position = position
+	get_parent().add_child(skill_a)
 	
 
 
