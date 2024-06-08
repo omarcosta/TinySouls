@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_gst2f"]
 [ext_resource type="PackedScene" uid="uid://c3nldrkhtbqfx" path="res://scenes/resources/death.tscn" id="2_mxkwc"]
-[ext_resource type="PackedScene" uid="uid://dky4hcknkynas" path="res://scenes/magics/warriors_roar.tscn" id="3_kxreh"]
+[ext_resource type="PackedScene" uid="uid://dky4hcknkynas" path="res://scenes/skills/magics/warriors_roar.tscn" id="3_kxreh"]
 [ext_resource type="Texture2D" uid="uid://crms0l7y44ehq" path="res://Warrior_red.png" id="4_ix8qh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ca1di"]
@@ -402,7 +402,6 @@ position = Vector2(371, 222)
 script = ExtResource("1_gst2f")
 death_prefab = ExtResource("2_mxkwc")
 health = 45
-skill_a_scene = ExtResource("3_kxreh")
 
 [node name="HitArea" type="Area2D" parent="."]
 

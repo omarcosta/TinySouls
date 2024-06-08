@@ -14,3 +14,4 @@ position = Vector2(711, 360)
 [node name="Pawn2" parent="." instance=ExtResource("2_u42pv")]
 position = Vector2(779, 251)
 scale = Vector2(2, 2)
+health = 100

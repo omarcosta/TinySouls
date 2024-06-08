@@ -68,7 +68,8 @@ offset = Vector2(0, -30)
 hframes = 7
 vframes = 2
 script = ExtResource("1_crnt1")
-health_regenerator = 20
+resource_type = "health"
+regenerator = 20
 
 [node name="Area2D" type="Area2D" parent="."]
 

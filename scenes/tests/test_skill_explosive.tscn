@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://di0kvskwabqk8"]
+[gd_scene load_steps=3 format=3 uid="uid://di0kvskwabqk8"]
 
 [ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="1_5o8c5"]
-[ext_resource type="PackedScene" uid="uid://c1lt5mpy4st3i" path="res://scenes/magics/explosive_barrel.tscn" id="2_82jw3"]
 [ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="3_sjejd"]
 
 [node name="TestSkillExplosive" type="Node2D"]
@@ -27,5 +26,3 @@ position = Vector2(254, 551)
 [node name="Player" parent="." instance=ExtResource("1_5o8c5")]
 position = Vector2(472, 335)
 health = 101
-skill_a_scene = ExtResource("2_82jw3")
-skill_a_damage = 100

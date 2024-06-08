@@ -1,0 +1,143 @@
+[gd_scene load_steps=20 format=3 uid="uid://1gklkidtabvd"]
+
+[ext_resource type="Script" path="res://scripts/mechanics/get_resources.gd" id="1_8e1ms"]
+[ext_resource type="Texture2D" uid="uid://dpw2ohxyvqjvm" path="res://addons/Tiny Swords/Terrain/Ground/Shadows.png" id="3_pk4y0"]
+[ext_resource type="Texture2D" uid="uid://bwcc00i1f1ox2" path="res://addons/Pixel Potion Pack/Large Bottle/BLUE/Large Bottle - BLUE - Spritesheet.png" id="4_u3ha7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0y8w"]
+radius = 29.0689
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egou1"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(0, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk4wb"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(16, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcl8b"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(32, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2evfw"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(48, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lajcu"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(64, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieu64"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(80, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkf2e"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(96, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6swh0"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(112, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xucwc"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(128, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opwac"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(144, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qynwk"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(160, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1btse"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(176, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpljr"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(192, 0, 16, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyf5j"]
+atlas = ExtResource("4_u3ha7")
+region = Rect2(208, 0, 16, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xm722"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egou1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk4wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcl8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2evfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lajcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ieu64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkf2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6swh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xucwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opwac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qynwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1btse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpljr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyf5j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Potion" type="Sprite2D" groups=["resources"]]
+offset = Vector2(0, -30)
+hframes = 7
+vframes = 2
+script = ExtResource("1_8e1ms")
+resource_type = "magic"
+regenerator = 20
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -18)
+shape = SubResource("CircleShape2D_t0y8w")
+debug_color = Color(0.247059, 0.337255, 0.847059, 0.207843)
+
+[node name="Shadows" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.422084, 0.25)
+texture = ExtResource("3_pk4y0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -22)
+scale = Vector2(1.67187, 0.93951)
+sprite_frames = SubResource("SpriteFrames_xm722")
+autoplay = "default"
+frame_progress = 0.115057
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcjbg8xql7jbo"]
+[gd_scene load_steps=10 format=3 uid="uid://bcjbg8xql7jbo"]
 
 [ext_resource type="Script" path="res://scripts/mechanics/cam_follow_playert.gd" id="1_m4g05"]
 [ext_resource type="Texture2D" uid="uid://fqjcx57qsvlu" path="res://addons/Tiny Swords/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="1_r26g5"]
 [ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="2_5xpud"]
 [ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="3_4a4sv"]
-[ext_resource type="PackedScene" uid="uid://c1lt5mpy4st3i" path="res://scenes/magics/explosive_barrel.tscn" id="4_hr6wv"]
 [ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/ui/hud.tscn" id="5_1nntd"]
 [ext_resource type="PackedScene" uid="uid://tn2fbln46ngl" path="res://scenes/resources/meat.tscn" id="6_yn84p"]
+[ext_resource type="PackedScene" uid="uid://dqqg3jl514eyv" path="res://scenes/skills/skill_magic.tscn" id="7_xbs2n"]
+[ext_resource type="PackedScene" uid="uid://b3w1oc10pir17" path="res://scenes/skills/skill_technique.tscn" id="8_j8ucv"]
+[ext_resource type="PackedScene" uid="uid://1gklkidtabvd" path="res://scenes/resources/potion.tscn" id="9_2honj"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -26,19 +28,11 @@ texture = ExtResource("1_r26g5")
 position = Vector2(634, 125)
 texture = ExtResource("1_r26g5")
 
-[node name="Player" parent="." instance=ExtResource("2_5xpud")]
-position = Vector2(288, 455)
-skill_a_scene = ExtResource("4_hr6wv")
-skill_a_damage = 50
-
 [node name="Pawn" parent="." instance=ExtResource("3_4a4sv")]
 position = Vector2(917, 481)
 scale = Vector2(1.5, 1.5)
-health = 20
+health = 40
 speed = 0.5
-
-[node name="Pawn2" parent="." instance=ExtResource("3_4a4sv")]
-position = Vector2(781, 387)
 
 [node name="Pawn3" parent="." instance=ExtResource("3_4a4sv")]
 position = Vector2(786, 543)
@@ -46,10 +40,34 @@ position = Vector2(786, 543)
 [node name="HUD" parent="." instance=ExtResource("5_1nntd")]
 
 [node name="Meat" parent="." instance=ExtResource("6_yn84p")]
-position = Vector2(471, 548)
+position = Vector2(310, 640)
 
 [node name="Meat2" parent="." instance=ExtResource("6_yn84p")]
-position = Vector2(468, 429)
+modulate = Color(0.207843, 0.129412, 1, 1)
+position = Vector2(205, 631)
+resource_type = "magic"
 
 [node name="Meat3" parent="." instance=ExtResource("6_yn84p")]
-position = Vector2(545, 482)
+position = Vector2(249, 753)
+
+[node name="Meat4" parent="." instance=ExtResource("6_yn84p")]
+position = Vector2(353, 877)
+
+[node name="Player" parent="." instance=ExtResource("2_5xpud")]
+position = Vector2(382, 498)
+
+[node name="Magic" parent="Player" instance=ExtResource("7_xbs2n")]
+
+[node name="Tecnic" parent="Player" instance=ExtResource("8_j8ucv")]
+
+[node name="Pawn2" parent="." instance=ExtResource("3_4a4sv")]
+position = Vector2(781, 387)
+
+[node name="Potion" parent="." instance=ExtResource("9_2honj")]
+position = Vector2(178, 518)
+
+[node name="Potion2" parent="." instance=ExtResource("9_2honj")]
+position = Vector2(489, 615)
+
+[node name="Potion3" parent="." instance=ExtResource("9_2honj")]
+position = Vector2(124, 674)

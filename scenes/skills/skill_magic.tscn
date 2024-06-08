@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqqg3jl514eyv"]
+
+[ext_resource type="Script" path="res://scripts/skills/player_magic.gd" id="1_s2ihr"]
+[ext_resource type="PackedScene" uid="uid://dky4hcknkynas" path="res://scenes/skills/magics/warriors_roar.tscn" id="2_8scar"]
+
+[node name="Magic" type="Node"]
+script = ExtResource("1_s2ihr")
+magic_prefab = ExtResource("2_8scar")
+damage = 18
+cost = 10
+inteval = 3
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://uxcyfs5hctiu"]
+
+[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="1_uauqv"]
+[ext_resource type="PackedScene" uid="uid://dqqg3jl514eyv" path="res://scenes/skills/skill_magic.tscn" id="2_mkg5s"]
+[ext_resource type="PackedScene" uid="uid://1gklkidtabvd" path="res://scenes/resources/potion.tscn" id="3_jto2m"]
+[ext_resource type="PackedScene" uid="uid://4faydfy557bu" path="res://scenes/misc/default_damage.tscn" id="3_no4wa"]
+[ext_resource type="PackedScene" uid="uid://tn2fbln46ngl" path="res://scenes/resources/meat.tscn" id="4_q4axu"]
+[ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="5_2ov8p"]
+[ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/ui/hud.tscn" id="6_pvwg6"]
+
+[node name="NewTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_uauqv")]
+position = Vector2(297, 205)
+
+[node name="Magic" parent="Player" instance=ExtResource("2_mkg5s")]
+damage = 1
+
+[node name="Damage" parent="Player" instance=ExtResource("3_no4wa")]
+
+[node name="Potion" parent="." instance=ExtResource("3_jto2m")]
+position = Vector2(668, 205)
+
+[node name="Potion2" parent="." instance=ExtResource("3_jto2m")]
+position = Vector2(735, 376)
+
+[node name="Potion3" parent="." instance=ExtResource("3_jto2m")]
+position = Vector2(498, 396)
+
+[node name="Meat" parent="." instance=ExtResource("4_q4axu")]
+position = Vector2(514, 37)
+
+[node name="Meat2" parent="." instance=ExtResource("4_q4axu")]
+position = Vector2(631, 57)
+
+[node name="Meat3" parent="." instance=ExtResource("4_q4axu")]
+position = Vector2(561, 90)
+
+[node name="Pawn" parent="." instance=ExtResource("5_2ov8p")]
+position = Vector2(82, 176)
+
+[node name="HUD" parent="." instance=ExtResource("6_pvwg6")]

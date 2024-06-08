@@ -13,17 +13,17 @@ extends CharacterBody2D
 @export_group("Player attributes")
 @export_range(0, 999) var health: int = 100
 @export_range(0, 999) var max_health: int = 100
-#@export_range(0, 999) var stamina: int = 50
-#@export_range(0, 999) var max_stamina: int = 50
-#@export_range(0, 999) var magic: int = 50
-#@export_range(0, 999) var max_magic: int = 50
+@export_range(0, 999) var stamina: int = 50
+@export_range(0, 999) var max_stamina: int = 50
+@export_range(0, 999) var magic: int = 50
+@export_range(0, 999) var max_magic: int = 50
 @export_range(1, 99) var attack_points: int = 2
 @export var speed: float = 2.5
 
-@export_group("Skills")
-@export var skill_a_scene: PackedScene
-@export var skill_a_damage: int = 10
-@export var skill_a_interval: float = 10.0
+# @export_group("Skills")
+# @export var skill_a_scene: PackedScene
+# @export var skill_a_damage: int = 10
+# @export var skill_a_interval: float = 10.0
 
 @export_group("Balancing coefficients") # Coeficientes
 @export_range(0,1) var coeff_velocity_atk: float = 0.25 # Redução de VEL ao ATK
@@ -44,16 +44,20 @@ var target_velocity: Vector2 = Vector2(0 , 0)
 
 func _ready():
 	GameManager.player_life_points_max = max_health
+	GameManager.player_stamina_points_max = max_stamina
+	GameManager.player_magic_points_max = max_magic
 
 func _process(delta) -> void:
 	GameManager.player_position = position
 	GameManager.player_life_points = health
+	GameManager.player_stamina_points = stamina
+	GameManager.player_magic_points = magic
 	read_input_moviment() # Obter o input de movimento
 	rotate_sprite() # Change sprite side
 	default_animations() # # Animações padrão do player
 	update_atk_cooldown(delta) # Temporizador de ATK
 	update_hit_cooldown(delta) # Teporizador de levar dano
-	update_skill_a_cooldown(delta) # Temporizador da habilidade A
+	# update_skill_a_cooldown(delta) # Temporizador da habilidade A
 	# Call ATK Func
 	if Input.is_action_just_pressed("atk_waek"):
 		attack("w")
@@ -144,18 +148,18 @@ func update_hit_cooldown(delta: float)-> void:
 
 func update_skill_a_cooldown(delta: float) -> void:
 	#Atualizar temporizador
-	skill_a_cooldown -= delta
-	if skill_a_cooldown > 0: return
-	is_available_skill_a = true
-	skill_a_cooldown = skill_a_interval
+	#skill_a_cooldown -= delta
+	#if skill_a_cooldown > 0: return
+	#is_available_skill_a = true
+	#skill_a_cooldown = skill_a_interval
+	#
+	## Ivocar skill
+	#var skill_a = skill_a_scene.instantiate()
+	#skill_a.damage_amount = skill_a_damage
+	#skill_a.global_position = position
+	#get_parent().add_child(skill_a)
 	
-	# Ivocar skill
-	var skill_a = skill_a_scene.instantiate()
-	skill_a.damage_amount = skill_a_damage
-	skill_a.global_position = position
-	get_parent().add_child(skill_a)
-	
-
+	pass
 
 
 func deal_damage_to_enemies() -> void:
@@ -224,11 +228,22 @@ func game_over() -> void:
 	die()
 
 
-func helth_regenerator_by_resources(amount: int) -> int:
-	if health + amount < max_health:
-		health += amount
-	else:
-		health = max_health
-	print("O Jogador tem: ", health)
-	return health
+func get_resources(amount: int, type: String) -> int:
+	match type:
+		"health":
+			if health + amount < max_health:
+				health += amount
+			else:
+				health = max_health
+			return health
+		"magic":
+			if magic + amount < max_magic:
+				magic += amount
+			else:
+				magic = max_magic
+			return magic
+		"gold":
+			return 0
+		_: # Default
+			return 0 
 

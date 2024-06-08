@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3w1oc10pir17"]
+
+[ext_resource type="Script" path="res://scripts/skills/player_technique.gd" id="1_eddr0"]
+[ext_resource type="PackedScene" uid="uid://c1lt5mpy4st3i" path="res://scenes/skills/ammos/explosive_barrel.tscn" id="2_vjqrt"]
+
+[node name="Tecnic" type="Node"]
+script = ExtResource("1_eddr0")
+tecnic_prefab = ExtResource("2_vjqrt")
+damage = 25
+reserve_ammo = 3
+inteval = 10
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
