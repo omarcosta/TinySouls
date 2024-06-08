@@ -5,7 +5,7 @@
 
 [node name="Tecnic" type="Node"]
 script = ExtResource("1_eddr0")
-tecnic_prefab = ExtResource("2_vjqrt")
+technique_prefab = ExtResource("2_vjqrt")
 damage = 25
 reserve_ammo = 3
 inteval = 10

@@ -1613,31 +1613,21 @@ script = ExtResource("4_i82er")
 
 [node name="Meat" parent="." instance=ExtResource("6_ij3qo")]
 position = Vector2(246.602, 1000)
-health_regenerator = 0
 
 [node name="Meat2" parent="." instance=ExtResource("6_ij3qo")]
 position = Vector2(152.751, 1139.16)
-health_regenerator = 0
 
 [node name="Meat3" parent="." instance=ExtResource("6_ij3qo")]
 position = Vector2(840.777, 1121.68)
-health_regenerator = 0
 
 [node name="Meat4" parent="." instance=ExtResource("6_ij3qo")]
 position = Vector2(741.748, 1005.83)
-health_regenerator = 0
 
 [node name="Meat5" parent="." instance=ExtResource("6_ij3qo")]
 position = Vector2(614.24, 1144.34)
-health_regenerator = 0
 
 [node name="Player" parent="." instance=ExtResource("7_swtio")]
 position = Vector2(181.23, 354.045)
-max_health = 100
-attack_points = 2
-coeff_velocity_atk = 0.25
-coeff_velocity_run = 1.35
-deadzone = 0.15
 
 [node name="Pawn" parent="." instance=ExtResource("3_tudjb")]
 position = Vector2(495.793, 183.172)

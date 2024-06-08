@@ -5,8 +5,8 @@ extends Node2D
 
 @onready var path_follow_2d: PathFollow2D = %PathFollow2D
 
-var interval: float = 0.0
-var cooldown: float = 0.0
+var interval: float = 0.0 # Mobs por segundo
+var cooldown: float = 0.0 # Temporizador
 
 func _process(delta: float):
 	# Temporizador

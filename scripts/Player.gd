@@ -6,28 +6,25 @@ extends CharacterBody2D
 @onready var sprite_player: Sprite2D = $Sprite
 @onready var sword_area: Area2D = $SwordArea
 @onready var hit_area: Area2D = $HitArea
-
-@export var death_prefab: PackedScene
+@onready var death_prefab: PackedScene = preload("res://scenes/resources/death.tscn")
 
 @export_category("Player") # Caracteristicas do player
 @export_group("Player attributes")
 @export_range(0, 999) var health: int = 100
 @export_range(0, 999) var max_health: int = 100
-@export_range(0, 999) var stamina: int = 50
-@export_range(0, 999) var max_stamina: int = 50
-@export_range(0, 999) var magic: int = 50
-@export_range(0, 999) var max_magic: int = 50
-@export_range(1, 99) var attack_points: int = 2
-@export var speed: float = 2.5
-
-# @export_group("Skills")
-# @export var skill_a_scene: PackedScene
-# @export var skill_a_damage: int = 10
-# @export var skill_a_interval: float = 10.0
+@export_range(0, 999) var stamina: float = 100.0
+@export_range(0, 999) var max_stamina: int = 100
+@export_range(0, 999) var magic: int = 100
+@export_range(0, 999) var max_magic: int = 100
+@export_range(1, 99) var attack_points: int = 5
+@export_range(1, 99) var stamina_for_attack: int = 20
+@export var speed: float = 2.0
 
 @export_group("Balancing coefficients") # Coeficientes
 @export_range(0,1) var coeff_velocity_atk: float = 0.25 # Redução de VEL ao ATK
 @export_range(1, 2.5) var coeff_velocity_run: float = 1.35 # Redução de VEL ao RUN
+@export_range(1, 3) var coeff_atk_cost_stamina: float = 1.30 # Acrescimo de custo de estamina para atk forte 
+@export_range(0, 100) var coeff_stamina_recovery: float = 0.75 # recureperação de stamina do FPS
 @export_range(0,1) var deadzone: float = 0.15 # Zona que será ignorada para evitar problemas em controles com analógicos
 
 # Variaveis manipuladas no código
@@ -37,15 +34,18 @@ var is_hit: bool = false # O jogador está levando dano
 var is_available_skill_a = true # Habilidade está disponivel para uso
 var attacking_cooldown: float = 0.0 # Contador de tempo para atacar
 var hit_cooldown: float = 0.0 # Contador de tempo para levar dano
-var skill_a_cooldown: float = 0.0 # Contador de tempo para usar habilidade
+var stamina_recovery_cooldown: float = 0.0 # Temporizador de quando começa a restauração de stamina
+# var skill_a_cooldown: float = 0.0 # Contador de tempo para usar habilidade
 var attacking_orientation: String = "RIGHT" # Define qual o lado do ataque: right, left, up, down
 var input_direction: Vector2 = Vector2(0 , 0)
 var target_velocity: Vector2 = Vector2(0 , 0)
+
 
 func _ready():
 	GameManager.player_life_points_max = max_health
 	GameManager.player_stamina_points_max = max_stamina
 	GameManager.player_magic_points_max = max_magic
+
 
 func _process(delta) -> void:
 	GameManager.player_position = position
@@ -57,12 +57,16 @@ func _process(delta) -> void:
 	default_animations() # # Animações padrão do player
 	update_atk_cooldown(delta) # Temporizador de ATK
 	update_hit_cooldown(delta) # Teporizador de levar dano
-	# update_skill_a_cooldown(delta) # Temporizador da habilidade A
+	update_stamina_recovery_cooldown(delta)
 	# Call ATK Func
 	if Input.is_action_just_pressed("atk_waek"):
 		attack("w")
 	elif Input.is_action_just_pressed("atk_strong"):
 		attack("s")
+	runnig() # Define se o personagem está correndo
+	stamina_for_running() # Gasto de stamina ao correr
+	stamina_recovery() # Restaura stamina
+	# print(stamina)
 	deal_damage_to_player()
 	game_over()
 
@@ -98,22 +102,37 @@ func rotate_sprite() -> void:
 
 func default_animations() -> void: 
 	if not input_direction.is_zero_approx() and !is_attacking:
-		if Input.is_action_pressed("move_run"):
+		#if Input.is_action_pressed("move_run"):
+		if Input.is_action_pressed("move_run") and stamina > 2: # o 2 é para estabilizar o stamina que vai ocilar entre -1 e 1
 			animation_player.play("run")
-			is_running = true
+			# is_running = true
 		else: 
 			animation_player.play("walk")
-			is_running = false
+			#is_running = false
 	elif input_direction.is_zero_approx() and !is_attacking: 
 		animation_player.play("idle")
 
+func runnig() -> void:
+	if Input.is_action_pressed("move_run") and not input_direction.is_zero_approx() and stamina > 0 and not is_attacking:
+		is_running = true
+	else:
+		is_running = false
+	print(is_running, " | ", stamina)
+		
 
 func attack(atk_type: String) -> void:
 	if is_attacking: # Ignora a função se já estiver em ação de ataque
 		return
+	if stamina < stamina_for_attack: # Ignora a função não tiver estamina
+		return
+	if atk_type == "s":
+		stamina -= stamina_for_attack * coeff_atk_cost_stamina
+	else:
+		stamina -= stamina_for_attack
 	attack_type_and_orientation(atk_type)
 	is_attacking = true # Define que o personagem está atacando
 	attacking_cooldown = animation_player.current_animation_length + 0.2 # O cooldown será a duração da animação
+	stamina_recovery_cooldown = attacking_cooldown * 1.3 # Garante que durante ataques seguidos não recupere stamina
 
 
 func attack_type_and_orientation(type: String) -> void:
@@ -132,6 +151,25 @@ func attack_type_and_orientation(type: String) -> void:
 			attacking_orientation = "RIGHT"
 
 
+func stamina_recovery() -> void:
+	if is_attacking or is_running: # Ignora a função se já estiver em ação de ataque
+		return
+	if stamina_recovery_cooldown <= 0.0:
+		if stamina >= max_stamina:
+			stamina = max_stamina
+		else:
+			stamina += coeff_stamina_recovery
+
+
+func stamina_for_running() -> void:
+	if not is_running:
+		return
+	if stamina > 0: #and stamina < 0.2: 
+		stamina -= stamina_for_attack * 0.02
+		if stamina < 1: 
+			stamina = 0
+
+
 func update_atk_cooldown(delta: float)-> void:
 	if not is_attacking: return
 	attacking_cooldown -= delta
@@ -146,20 +184,9 @@ func update_hit_cooldown(delta: float)-> void:
 		is_hit = false
 
 
-func update_skill_a_cooldown(delta: float) -> void:
-	#Atualizar temporizador
-	#skill_a_cooldown -= delta
-	#if skill_a_cooldown > 0: return
-	#is_available_skill_a = true
-	#skill_a_cooldown = skill_a_interval
-	#
-	## Ivocar skill
-	#var skill_a = skill_a_scene.instantiate()
-	#skill_a.damage_amount = skill_a_damage
-	#skill_a.global_position = position
-	#get_parent().add_child(skill_a)
-	
-	pass
+func update_stamina_recovery_cooldown(delta: float)-> void:
+	if is_attacking: return
+	stamina_recovery_cooldown -= delta
 
 
 func deal_damage_to_enemies() -> void:
@@ -192,24 +219,11 @@ func deal_damage_to_player() -> void:
 			suffered_damage(enemy.damage)
 			is_hit = true
 			hit_cooldown = 1
-			print(health)
 
 
 func suffered_damage(amount: int) -> void: 
 	health -= amount
 	reaction_to_damage()
-	#if life_points <= -0:
-		#die()
-		#GameManager.gameover = true
-	
-	
-func die() -> void:
-	if death_prefab:
-		var death_object = death_prefab.instantiate()
-		death_object.position = position
-		# death_object.scale = scale
-		get_parent().add_child(death_object)
-	queue_free()
 
 
 func reaction_to_damage() -> void:
@@ -226,6 +240,15 @@ func game_over() -> void:
 	GameManager.player_life_points = health
 	GameManager.gameover = true
 	die()
+
+
+func die() -> void:
+	if death_prefab:
+		var death_object = death_prefab.instantiate()
+		death_object.position = position
+		# death_object.scale = scale
+		get_parent().add_child(death_object)
+	queue_free()
 
 
 func get_resources(amount: int, type: String) -> int:
@@ -246,4 +269,3 @@ func get_resources(amount: int, type: String) -> int:
 			return 0
 		_: # Default
 			return 0 
-

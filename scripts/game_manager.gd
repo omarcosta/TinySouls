@@ -7,7 +7,7 @@ extends Node
 @onready var player_position: Vector2 # Posição global do jogador
 @onready var player_life_points: int = 100 # Vida do jogador
 @onready var player_life_points_max: int = 100 # Vida máxima do jogador
-@onready var player_stamina_points: int = 100 # Vida do jogador
+@onready var player_stamina_points: float = 100.0 # Vida do jogador
 @onready var player_stamina_points_max: int = 100 # Vida máxima do jogador
 @onready var player_magic_points: int = 100 # Vida do jogador
 @onready var player_magic_points_max: int = 100 # Vida máxima do jogador
