@@ -23,7 +23,7 @@ extends CharacterBody2D
 @export_group("Balancing coefficients") # Coeficientes
 @export_range(0,1) var coeff_velocity_atk: float = 0.25 # Redução de VEL ao ATK
 @export_range(1, 2.5) var coeff_velocity_run: float = 1.35 # Redução de VEL ao RUN
-@export_range(1, 3) var coeff_atk_cost_stamina: float = 1.30 # Acrescimo de custo de estamina para atk forte 
+@export_range(1, 3) var coeff_atk_strong: float = 1.30 # Acrescimo de custo de estamina para atk forte 
 @export_range(0, 100) var coeff_stamina_recovery: float = 0.75 # recureperação de stamina do FPS
 @export_range(0,1) var deadzone: float = 0.15 # Zona que será ignorada para evitar problemas em controles com analógicos
 
@@ -117,7 +117,7 @@ func runnig() -> void:
 		is_running = true
 	else:
 		is_running = false
-	print(is_running, " | ", stamina)
+	# print(is_running, " | ", stamina)
 		
 
 func attack(atk_type: String) -> void:
@@ -126,7 +126,7 @@ func attack(atk_type: String) -> void:
 	if stamina < stamina_for_attack: # Ignora a função não tiver estamina
 		return
 	if atk_type == "s":
-		stamina -= stamina_for_attack * coeff_atk_cost_stamina
+		stamina -= stamina_for_attack * coeff_atk_strong
 	else:
 		stamina -= stamina_for_attack
 	attack_type_and_orientation(atk_type)
@@ -189,7 +189,7 @@ func update_stamina_recovery_cooldown(delta: float)-> void:
 	stamina_recovery_cooldown -= delta
 
 
-func deal_damage_to_enemies() -> void:
+func deal_damage_to_enemies(type: String) -> void:
 	var bodies = sword_area.get_overlapping_bodies() # Obtem todos os corpos f[isicos na area. Pode ser mudado para pegar a area
 	for body in bodies:
 		if body.is_in_group("enemies"):
@@ -207,7 +207,11 @@ func deal_damage_to_enemies() -> void:
 					attack_direction = Vector2.RIGHT
 			var dot_product = direction_to_enemy.dot(attack_direction)
 			if dot_product >= 0.75:
-				enemy.suffered_damage(attack_points)
+				if type == "s":
+					enemy.suffered_damage(ceil(attack_points * coeff_atk_strong))
+				else: 
+					enemy.suffered_damage(attack_points)
+		
 
 
 func deal_damage_to_player() -> void:

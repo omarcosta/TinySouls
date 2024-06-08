@@ -28,6 +28,8 @@ position = Vector2(561, 90)
 
 [node name="Pawn" parent="." instance=ExtResource("5_2ov8p")]
 position = Vector2(82, 176)
+health = 500
+speed = 0.1
 
 [node name="HUD" parent="." instance=ExtResource("6_pvwg6")]
 
