@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://d04n5gd1tc82r"]
+
+[ext_resource type="Texture2D" uid="uid://dpw2ohxyvqjvm" path="res://addons/Tiny Swords/Terrain/Ground/Shadows.png" id="1_dvib1"]
+[ext_resource type="Script" path="res://scripts/mechanics/get_resources.gd" id="1_tr146"]
+[ext_resource type="Texture2D" uid="uid://dle60ikm5yba2" path="res://addons/Tiny Swords/Factions/Goblins/Troops/TNT/Dynamite/Dynamite.png" id="3_3311x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0y8w"]
+radius = 29.0689
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu7p6"]
+atlas = ExtResource("3_3311x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiyst"]
+atlas = ExtResource("3_3311x")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8ydi"]
+atlas = ExtResource("3_3311x")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r13cg"]
+atlas = ExtResource("3_3311x")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j841m"]
+atlas = ExtResource("3_3311x")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyest"]
+atlas = ExtResource("3_3311x")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfmuf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fu7p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiyst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8ydi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r13cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j841m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyest")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Ammo" type="Sprite2D" groups=["resources"]]
+texture = ExtResource("1_dvib1")
+offset = Vector2(0, -30)
+hframes = 7
+vframes = 2
+script = ExtResource("1_tr146")
+resource_type = "ammo"
+regenerator = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, -18)
+shape = SubResource("CircleShape2D_t0y8w")
+debug_color = Color(0.529412, 0.141176, 0.0980392, 0.419608)
+
+[node name="Shadows" type="Sprite2D" parent="."]
+position = Vector2(-9, -2)
+scale = Vector2(0.494792, 0.15625)
+texture = ExtResource("1_dvib1")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -23)
+rotation = 0.610865
+sprite_frames = SubResource("SpriteFrames_gfmuf")
+autoplay = "default"
+frame_progress = 0.309804
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -18)
+rotation = 0.837758
+sprite_frames = SubResource("SpriteFrames_gfmuf")
+autoplay = "default"
+frame_progress = 0.810827
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -10)
+rotation = 1.0821
+sprite_frames = SubResource("SpriteFrames_gfmuf")
+autoplay = "default"
+frame_progress = 0.967454
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

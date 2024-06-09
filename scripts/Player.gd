@@ -255,7 +255,7 @@ func die() -> void:
 	queue_free()
 
 
-func get_resources(amount: int, type: String) -> int:
+func get_resources(amount: int, type: String):
 	match type:
 		"health":
 			if health + amount < max_health:
@@ -270,6 +270,11 @@ func get_resources(amount: int, type: String) -> int:
 				magic = max_magic
 			return magic
 		"gold":
-			return 0
+			pass
+		"ammo":
+			if (GameManager.technique_reserve_ammo + amount) > GameManager.technique_max_reserver_ammo:
+				GameManager.technique_reserve_ammo = GameManager.technique_max_reserver_ammo
+			else:
+				GameManager.technique_reserve_ammo += amount
 		_: # Default
-			return 0 
+			return

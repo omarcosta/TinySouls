@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var damage_amount: int = 20
+@export var damage_amount: int = 0
 
 
 func deal_damage() -> void:

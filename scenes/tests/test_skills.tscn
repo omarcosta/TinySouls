@@ -1,0 +1,164 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1ak3nqytnrqw"]
+
+[ext_resource type="Texture2D" uid="uid://u1baos4eo6ax" path="res://addons/Wenrexa Interface UI KIT/Skills/bomb_disable.png" id="1_cw6gm"]
+[ext_resource type="Script" path="res://scripts/UI/ui_skills.gd" id="1_d72hj"]
+[ext_resource type="Texture2D" uid="uid://c5kvjqou5uiqg" path="res://addons/Wenrexa Interface UI KIT/Skills/roar_disable.png" id="1_ub3ay"]
+[ext_resource type="Texture2D" uid="uid://djphk5lkw36ob" path="res://addons/Wenrexa Interface UI KIT/Skills/roar_enable.png" id="2_af6pi"]
+[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="4_plji5"]
+[ext_resource type="Texture2D" uid="uid://c0j5nbb42pr81" path="res://addons/Wenrexa Interface UI KIT/Skills/bomb_enable.png" id="4_y0qkx"]
+[ext_resource type="PackedScene" uid="uid://b3w1oc10pir17" path="res://scenes/skills/skill_technique.tscn" id="5_23wvp"]
+[ext_resource type="PackedScene" uid="uid://dqqg3jl514eyv" path="res://scenes/skills/skill_magic.tscn" id="6_sishu"]
+[ext_resource type="PackedScene" uid="uid://d4frpnsrpqf56" path="res://scenes/ui/hud_player.tscn" id="7_butib"]
+[ext_resource type="PackedScene" uid="uid://1gklkidtabvd" path="res://scenes/resources/potion.tscn" id="8_8i06f"]
+[ext_resource type="PackedScene" uid="uid://tn2fbln46ngl" path="res://scenes/resources/meat.tscn" id="11_h6skf"]
+[ext_resource type="PackedScene" uid="uid://d04n5gd1tc82r" path="res://scenes/resources/ammo.tscn" id="12_ncgbp"]
+
+[node name="TestSkills" type="CanvasLayer"]
+
+[node name="teste pls delete" type="Node" parent="."]
+
+[node name="Potion" parent="teste pls delete" instance=ExtResource("8_8i06f")]
+position = Vector2(600, 236)
+
+[node name="Potion2" parent="teste pls delete" instance=ExtResource("8_8i06f")]
+position = Vector2(511, 216)
+
+[node name="Potion3" parent="teste pls delete" instance=ExtResource("8_8i06f")]
+position = Vector2(714, 401)
+
+[node name="Potion4" parent="teste pls delete" instance=ExtResource("8_8i06f")]
+position = Vector2(816, 214)
+
+[node name="Potion5" parent="teste pls delete" instance=ExtResource("8_8i06f")]
+position = Vector2(701, 264)
+
+[node name="Potion6" parent="teste pls delete" instance=ExtResource("8_8i06f")]
+position = Vector2(575, 496)
+
+[node name="HUDPlayer" parent="teste pls delete" instance=ExtResource("7_butib")]
+offset_left = 215.0
+offset_top = 11.0
+offset_right = 632.0
+offset_bottom = 121.0
+
+[node name="Player" parent="teste pls delete" instance=ExtResource("4_plji5")]
+position = Vector2(366, 361)
+magic = 30
+
+[node name="Tecnic" parent="teste pls delete/Player" instance=ExtResource("5_23wvp")]
+reserve_ammo = 2
+inteval = 2
+
+[node name="Magic" parent="teste pls delete/Player" instance=ExtResource("6_sishu")]
+interval = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 2.0
+offset_right = 180.0
+offset_bottom = 202.0
+script = ExtResource("1_d72hj")
+
+[node name="MagicProgressBar" type="TextureProgressBar" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 88.0
+step = 0.01
+texture_under = ExtResource("1_ub3ay")
+texture_progress = ExtResource("2_af6pi")
+tint_under = Color(1, 1, 1, 0.607843)
+
+[node name="MagicCooldownLabel" type="Label" parent="Control/MagicProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "0s"
+vertical_alignment = 1
+
+[node name="TechniqueProgressBar" type="TextureProgressBar" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 90.0
+offset_right = 88.0
+offset_bottom = 178.0
+step = 0.01
+texture_under = ExtResource("1_cw6gm")
+texture_progress = ExtResource("4_y0qkx")
+tint_under = Color(1, 1, 1, 0.607843)
+
+[node name="TechniqueCooldownLabel" type="Label" parent="Control/TechniqueProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 65.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "0s"
+vertical_alignment = 1
+
+[node name="TechniqueReserveLabel" type="Label" parent="Control/TechniqueProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -29.0
+offset_right = 67.0
+offset_bottom = -6.00003
+grow_horizontal = 0
+grow_vertical = 0
+text = "0 ammo"
+vertical_alignment = 1
+
+[node name="Meat" parent="." instance=ExtResource("11_h6skf")]
+position = Vector2(559, 368)
+
+[node name="Meat2" parent="." instance=ExtResource("11_h6skf")]
+position = Vector2(429, 501)
+
+[node name="Meat3" parent="." instance=ExtResource("11_h6skf")]
+position = Vector2(297, 502)
+
+[node name="Meat4" parent="." instance=ExtResource("11_h6skf")]
+position = Vector2(161, 482)
+
+[node name="Meat5" parent="." instance=ExtResource("12_ncgbp")]
+position = Vector2(714, 500)
+
+[node name="Meat6" parent="." instance=ExtResource("12_ncgbp")]
+position = Vector2(791, 455)
+
+[node name="Meat7" parent="." instance=ExtResource("12_ncgbp")]
+position = Vector2(795, 535)
+regenerator = 15
+
+[node name="Meat8" parent="." instance=ExtResource("12_ncgbp")]
+position = Vector2(80, 357)
+regenerator = 3
+
+[node name="Meat9" parent="." instance=ExtResource("12_ncgbp")]
+position = Vector2(69, 543)
+regenerator = 3
+
+[node name="Meat10" parent="." instance=ExtResource("12_ncgbp")]
+position = Vector2(230, 592)
+
+[node name="Meat11" parent="." instance=ExtResource("12_ncgbp")]
+position = Vector2(380, 599)

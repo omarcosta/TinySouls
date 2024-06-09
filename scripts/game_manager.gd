@@ -12,20 +12,30 @@ extends Node
 @onready var player_magic_points: int = 100 # Vida do jogador
 @onready var player_magic_points_max: int = 100 # Vida máxima do jogador
 
+# Skill Magic
+@onready var magic_available: bool = true
+@onready var magic_interval: float = 0
+#@onready var magic_cooldown: float = 0
+
+# Skills Technique
+@onready var technique_available: bool = true
+@onready var technique_interval: float = 0
+@onready var technique_reserve_ammo: int = 0
+@onready var technique_max_reserver_ammo: int = 0
+
 # Stage
 @onready var waves: int = 0 # Ondas de inimigos
 @onready var enemies_defeated: int = 0 # Quantidade de inimigos derrotados
 
 func _process(delta):
 	player_lives()
-	# player_life_points -= delta/100
-	# player_stamina_points -= delta/100
-	# player_magic_points -= delta/100
 	
 
 func player_lives() -> void:
 	if player_life_points <= 0:
 		gameover = true
+
+
 
 #func _input(event):
 	#if event is InputEventKey:
