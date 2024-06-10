@@ -35,9 +35,40 @@ health = 40
 speed = 0.5
 
 [node name="Pawn3" parent="." instance=ExtResource("3_by7b8")]
-position = Vector2(786, 543)
+position = Vector2(803, 523)
 
-[node name="HUD" parent="." instance=ExtResource("4_w8j3c")]
+[node name="Pawn4" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(650, 340)
+
+[node name="Pawn5" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(870, 293)
+
+[node name="Pawn6" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(1089, 395)
+
+[node name="Pawn7" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(1082, 653)
+
+[node name="Pawn8" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(992, 263)
+
+[node name="Pawn9" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(754, 678)
+
+[node name="Pawn10" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(982, 570)
+
+[node name="Pawn11" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(606, 652)
+
+[node name="Pawn12" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(606, 467)
+
+[node name="Pawn13" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(894, 651)
+
+[node name="Pawn14" parent="." instance=ExtResource("3_by7b8")]
+position = Vector2(647, 524)
 
 [node name="Meat" parent="." instance=ExtResource("5_lmim3")]
 position = Vector2(310, 640)
@@ -59,7 +90,9 @@ position = Vector2(382, 498)
 [node name="Magic" parent="Player" instance=ExtResource("7_7hdix")]
 
 [node name="Tecnic" parent="Player" instance=ExtResource("8_phw13")]
-reserve_ammo = 0
+reserve_ammo = 3
+
+[node name="HUD" parent="." instance=ExtResource("4_w8j3c")]
 
 [node name="Pawn2" parent="." instance=ExtResource("3_by7b8")]
 position = Vector2(781, 387)

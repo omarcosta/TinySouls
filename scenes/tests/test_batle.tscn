@@ -15,7 +15,6 @@ max_magic = 30
 [node name="Magic" parent="Player" instance=ExtResource("2_gws7q")]
 
 [node name="Tecnic" parent="Player" instance=ExtResource("3_5eebk")]
-reserve_ammo = 0
 
 [node name="Pawn" parent="." instance=ExtResource("2_u42pv")]
 position = Vector2(711, 360)

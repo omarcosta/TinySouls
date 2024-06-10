@@ -11,12 +11,17 @@ extends Node2D
 @export var view_damage_prefab: PackedScene
 @export var death_prefab: PackedScene
 
+@export_group("Loots % - Max 100")
+@export var drop_nothing: float = 50
+@export var drop_health : float = 25
+@export var drop_magic  : float = 15
+@export var drop_ammo   : float = 5
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func suffered_damage(amount: int) -> void: 
 	health -= amount
 	reaction_to_damage()
-	
 	
 	# View Damage
 	var view_damage = view_damage_prefab.instantiate()
@@ -27,21 +32,46 @@ func suffered_damage(amount: int) -> void:
 		view_damage.global_position = global_position
 	get_parent().add_child(view_damage) # Coloca a cena no node que executa o script 
 	
-	
-	
 	# Enemy death
 	if health <= 0:
-		die()
+		drop()
+		# die()
+		
+func drop() -> void: 
+	var drop_chance = randi_range(0,100)
+	var prefab: PackedScene
+	if drop_chance < drop_ammo:
+		print(drop_chance," AMMO")
+		prefab = preload("res://scenes/resources/ammo.tscn")
+	elif drop_chance < drop_magic:
+		print(drop_chance," magic")
+		prefab = preload("res://scenes/resources/potion.tscn")
+	elif drop_chance < drop_health:
+		print(drop_chance," vida")
+		prefab = preload("res://scenes/resources/meat.tscn")
+	else:
+		print(drop_chance," death")
+		prefab = preload("res://scenes/resources/death.tscn")
+	create_resource(prefab)
 	
 	
-func die() -> void:
-	if death_prefab:
-		var death_object = death_prefab.instantiate()
-		death_object.position = position
+func create_resource(prefab: PackedScene) -> void:
+	if prefab:
+		var prefab_object = prefab.instantiate()
+		prefab_object.position = position
 		# death_object.scale = scale
-		get_parent().add_child(death_object)
+		get_parent().add_child(prefab_object)
 	GameManager.enemies_defeated += 1
 	queue_free()
+	
+#func die() -> void:
+	#if death_prefab:
+		#var death_object = death_prefab.instantiate()
+		#death_object.position = position
+		## death_object.scale = scale
+		#get_parent().add_child(death_object)
+	#GameManager.enemies_defeated += 1
+	#queue_free()
 
 
 func reaction_to_damage() -> void:

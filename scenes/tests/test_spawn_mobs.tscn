@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfwa1j1yawnu4"]
+[gd_scene load_steps=7 format=3 uid="uid://bfwa1j1yawnu4"]
 
 [ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="1_k0rwo"]
 [ext_resource type="PackedScene" uid="uid://clpbutbb5yiiu" path="res://scenes/misc/spawn_mobs.tscn" id="1_pbde0"]
 [ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="2_l84cm"]
+[ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/ui/hud.tscn" id="4_4w8qc"]
+[ext_resource type="PackedScene" uid="uid://b3w1oc10pir17" path="res://scenes/skills/skill_technique.tscn" id="4_he5b1"]
+[ext_resource type="PackedScene" uid="uid://dqqg3jl514eyv" path="res://scenes/skills/skill_magic.tscn" id="5_rmuyb"]
 
 [node name="TestSpawnMobs" type="Node2D"]
 
 [node name="SpawnMobs" parent="." instance=ExtResource("1_pbde0")]
 mobs_list = Array[PackedScene]([ExtResource("2_l84cm")])
+mobs_per_minute = 20.0
 
 [node name="Player" parent="." instance=ExtResource("1_k0rwo")]
 position = Vector2(253, 315)
+
+[node name="Technique" parent="Player" instance=ExtResource("4_he5b1")]
+reserve_ammo = 3
+
+[node name="Magic" parent="Player" instance=ExtResource("5_rmuyb")]
+
+[node name="HUD" parent="." instance=ExtResource("4_4w8qc")]
