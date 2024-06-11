@@ -1,4 +1,4 @@
-class_name Player
+# class_name Player
 extends CharacterBody2D
 
 # Variaveis carregadas automaticamente quando o node é renderizado

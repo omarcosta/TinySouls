@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmdlno74g1a2x"]
 
-[ext_resource type="Script" path="res://scripts/UI/timer.gd" id="1_ivmhd"]
+[ext_resource type="Script" path="res://scripts/ui/ui_timer.gd" id="1_ivmhd"]
 [ext_resource type="FontFile" uid="uid://bjadthcly4wt3" path="res://addons/fonts/caslon-antique.bold/caslon-antique.bold.ttf" id="2_7jmqx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rvanx"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d1ak3nqytnrqw"]
 
-[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="4_plji5"]
+[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/players/player.tscn" id="4_plji5"]
 [ext_resource type="PackedScene" uid="uid://b3w1oc10pir17" path="res://scenes/skills/skill_technique.tscn" id="5_23wvp"]
 [ext_resource type="PackedScene" uid="uid://cvw103almi5su" path="res://scenes/ui/hud_skills.tscn" id="6_ay7gm"]
 [ext_resource type="PackedScene" uid="uid://dqqg3jl514eyv" path="res://scenes/skills/skill_magic.tscn" id="6_sishu"]

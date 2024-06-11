@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfehv7d8cf6rd"]
 
 [ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="1_6mo83"]
-[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="2_bpg0r"]
+[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/players/player.tscn" id="2_bpg0r"]
 
 [node name="TestViewDamage" type="Node2D"]
 

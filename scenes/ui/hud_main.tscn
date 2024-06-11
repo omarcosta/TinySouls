@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d4frpnsrpqf56" path="res://scenes/ui/hud_player.tscn" id="1_00pso"]
 [ext_resource type="PackedScene" uid="uid://dajbasyr011gj" path="res://scenes/ui/hud_waves.tscn" id="1_i353l"]
-[ext_resource type="PackedScene" uid="uid://dmdlno74g1a2x" path="res://scenes/ui/timer.tscn" id="3_6hues"]
+[ext_resource type="PackedScene" uid="uid://dmdlno74g1a2x" path="res://scenes/ui/hud_timer.tscn" id="3_6hues"]
 [ext_resource type="PackedScene" uid="uid://cvw103almi5su" path="res://scenes/ui/hud_skills.tscn" id="4_helmg"]
 
 [node name="HUD" type="CanvasLayer"]

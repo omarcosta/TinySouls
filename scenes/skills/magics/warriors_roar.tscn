@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dky4hcknkynas"]
 
-[ext_resource type="Script" path="res://scripts/skills/warriors_roar.gd" id="1_w6g7h"]
+[ext_resource type="Script" path="res://scripts/skills/magics/warriors_roar.gd" id="1_w6g7h"]
 [ext_resource type="Texture2D" uid="uid://dlyu5omfqtgy4" path="res://addons/VFX Free Pack/effect_warriors_roar/Spritesheets/Effect_Charged_1_357x295.png" id="2_uito0"]
 
 [sub_resource type="Animation" id="Animation_nv3k5"]

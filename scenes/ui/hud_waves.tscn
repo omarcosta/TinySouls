@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dajbasyr011gj"]
 
-[ext_resource type="Script" path="res://scripts/UI/ui_waves.gd" id="1_dvcrq"]
+[ext_resource type="Script" path="res://scripts/ui/ui_waves.gd" id="1_dvcrq"]
 [ext_resource type="Texture2D" uid="uid://c17j4rrs562bv" path="res://addons/Wenrexa Interface UI KIT/PNG/Icons/Circle02.png" id="2_2yvpc"]
 [ext_resource type="FontFile" uid="uid://bjadthcly4wt3" path="res://addons/fonts/caslon-antique.bold/caslon-antique.bold.ttf" id="3_i43hn"]
 

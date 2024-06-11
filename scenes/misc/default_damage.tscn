@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://4faydfy557bu"]
 
-[ext_resource type="Script" path="res://scripts/UI/view_damage.gd" id="1_3gdgk"]
+[ext_resource type="Script" path="res://scripts/ui/view_damage.gd" id="1_3gdgk"]
 [ext_resource type="FontFile" uid="uid://bjadthcly4wt3" path="res://addons/fonts/caslon-antique.bold/caslon-antique.bold.ttf" id="2_wjelv"]
 
 [sub_resource type="Animation" id="Animation_cdo1u"]

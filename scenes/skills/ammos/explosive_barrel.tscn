@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c1lt5mpy4st3i"]
 
-[ext_resource type="Script" path="res://scripts/skills/explosive_barrel.gd" id="1_drlm4"]
+[ext_resource type="Script" path="res://scripts/skills/ammos/explosive_barrel.gd" id="1_drlm4"]
 [ext_resource type="Texture2D" uid="uid://dpw2ohxyvqjvm" path="res://addons/Tiny Swords/Terrain/Ground/Shadows.png" id="2_1rwp7"]
 [ext_resource type="Texture2D" uid="uid://dpbr3qi6m5poh" path="res://addons/Tiny Swords/Factions/Goblins/Troops/Barrel/Red/Barrel_Red.png" id="2_kn45a"]
 [ext_resource type="Texture2D" uid="uid://ob43q81osxl3" path="res://addons/Tiny Swords/Effects/Explosion/Explosions.png" id="3_n3vso"]

@@ -41,16 +41,12 @@ func drop() -> void:
 	var drop_chance = randi_range(0,100)
 	var prefab: PackedScene
 	if drop_chance < drop_ammo:
-		print(drop_chance," AMMO")
 		prefab = preload("res://scenes/resources/ammo.tscn")
 	elif drop_chance < drop_magic:
-		print(drop_chance," magic")
 		prefab = preload("res://scenes/resources/potion.tscn")
 	elif drop_chance < drop_health:
-		print(drop_chance," vida")
 		prefab = preload("res://scenes/resources/meat.tscn")
 	else:
-		print(drop_chance," death")
 		prefab = preload("res://scenes/resources/death.tscn")
 	create_resource(prefab)
 	

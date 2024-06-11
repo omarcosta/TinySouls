@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/mechanics/cam_follow_playert.gd" id="1_fjfc6"]
 [ext_resource type="Texture2D" uid="uid://fqjcx57qsvlu" path="res://addons/Tiny Swords/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="2_8vnor"]
 [ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="3_by7b8"]
-[ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/ui/hud.tscn" id="4_w8j3c"]
+[ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/ui/hud_main.tscn" id="4_w8j3c"]
 [ext_resource type="PackedScene" uid="uid://tn2fbln46ngl" path="res://scenes/resources/meat.tscn" id="5_lmim3"]
-[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/player.tscn" id="6_afh1e"]
+[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/players/player.tscn" id="6_afh1e"]
 [ext_resource type="PackedScene" uid="uid://dqqg3jl514eyv" path="res://scenes/skills/skill_magic.tscn" id="7_7hdix"]
 [ext_resource type="PackedScene" uid="uid://b3w1oc10pir17" path="res://scenes/skills/skill_technique.tscn" id="8_phw13"]
 [ext_resource type="PackedScene" uid="uid://1gklkidtabvd" path="res://scenes/resources/potion.tscn" id="9_hrgpn"]
@@ -85,7 +85,7 @@ position = Vector2(249, 753)
 position = Vector2(353, 877)
 
 [node name="Player" parent="." instance=ExtResource("6_afh1e")]
-position = Vector2(382, 498)
+position = Vector2(349, 397)
 
 [node name="Magic" parent="Player" instance=ExtResource("7_7hdix")]
 
