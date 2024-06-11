@@ -62,11 +62,14 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.6, 0.6001),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["s"],
 "method": &"deal_damage_to_enemies"
+}, {
+"args": [],
+"method": &"audio_atk_strong_play"
 }]
 }
 
@@ -92,11 +95,14 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.3, 0.3001),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["w"],
 "method": &"deal_damage_to_enemies"
+}, {
+"args": [],
+"method": &"audio_atk_weak_play"
 }]
 }
 
@@ -122,11 +128,14 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.6, 0.6001),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["s"],
 "method": &"deal_damage_to_enemies"
+}, {
+"args": [],
+"method": &"audio_atk_strong_play"
 }]
 }
 
@@ -164,11 +173,14 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.3, 0.3001),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["w"],
 "method": &"deal_damage_to_enemies"
+}, {
+"args": [],
+"method": &"audio_atk_weak_play"
 }]
 }
 
@@ -194,11 +206,14 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.6, 0.6001),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["s"],
 "method": &"deal_damage_to_enemies"
+}, {
+"args": [],
+"method": &"audio_atk_strong_play"
 }]
 }
 
@@ -236,11 +251,14 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.3, 0.3001),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["w"],
 "method": &"deal_damage_to_enemies"
+}, {
+"args": [],
+"method": &"audio_atk_weak_play"
 }]
 }
 

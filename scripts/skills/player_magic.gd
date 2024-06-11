@@ -39,7 +39,9 @@ func _process(delta: float) -> void:
 			no_waiting = false
 			player.magic -= cost
 			stopwatch.start()
-
+	if not is_available:
+		if Input.is_action_just_pressed("skill_magic"):
+			SoundManager.sound_effect_error()
 
 func _on_timer_timeout():
 	no_waiting = true

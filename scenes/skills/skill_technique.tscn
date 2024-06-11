@@ -7,6 +7,7 @@
 script = ExtResource("1_eddr0")
 technique_prefab = ExtResource("2_vjqrt")
 damage = 25
+reserve_ammo = 2
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

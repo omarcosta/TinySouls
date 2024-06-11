@@ -44,6 +44,9 @@ func _process(delta: float) -> void:
 			print(typeof(reserve_ammo))
 			GameManager.technique_reserve_ammo = reserve_ammo
 			cooldown.start()
+	if not is_available:
+		if Input.is_action_just_pressed("skill_technique"):
+			SoundManager.sound_effect_error()
 
 
 func _on_timer_timeout():

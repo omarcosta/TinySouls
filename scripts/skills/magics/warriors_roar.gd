@@ -9,3 +9,6 @@ func deal_damage() -> void:
 		if body.is_in_group("enemies"):
 			var enemy: Enemy = body
 			enemy.suffered_damage(damage_amount)
+
+func audio_play():
+	SoundManager.sound_effect_roar()

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlwnjmowunxwc"]
+[gd_scene load_steps=9 format=3 uid="uid://dlwnjmowunxwc"]
 
 [ext_resource type="Texture2D" uid="uid://cpjcxggv80v3i" path="res://addons/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="1_cy1g5"]
 [ext_resource type="PackedScene" uid="uid://bvastevqo1038" path="res://scenes/cams/camera_2d_smoothing.tscn" id="2_7tt3r"]
+[ext_resource type="PackedScene" uid="uid://b3w1oc10pir17" path="res://scenes/skills/skill_technique.tscn" id="3_4fvks"]
+[ext_resource type="PackedScene" uid="uid://dqqg3jl514eyv" path="res://scenes/skills/skill_magic.tscn" id="4_7owxb"]
 [ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/ui/hud_main.tscn" id="5_ajk41"]
 [ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/players/player.tscn" id="7_swtio"]
 
@@ -1608,6 +1610,11 @@ layer_3/tile_data = PackedInt32Array(393223, 393216, 1, 393224, 393216, 1, 32768
 
 [node name="Player" parent="Game" instance=ExtResource("7_swtio")]
 position = Vector2(44.0129, 113.269)
+
+[node name="Technique" parent="Game/Player" instance=ExtResource("3_4fvks")]
+reserve_ammo = 5
+
+[node name="Magic" parent="Game/Player" instance=ExtResource("4_7owxb")]
 
 [node name="Camera2D" parent="." instance=ExtResource("2_7tt3r")]
 position = Vector2(47.8964, 91.9094)

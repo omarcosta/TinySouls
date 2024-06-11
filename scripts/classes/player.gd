@@ -124,6 +124,7 @@ func attack(atk_type: String) -> void:
 	if is_attacking: # Ignora a função se já estiver em ação de ataque
 		return
 	if stamina < stamina_for_attack: # Ignora a função não tiver estamina
+		SoundManager.sound_effect_player_not_stamina()
 		return
 	if atk_type == "s":
 		stamina -= stamina_for_attack * coeff_atk_strong
@@ -228,6 +229,7 @@ func deal_damage_to_player() -> void:
 func suffered_damage(amount: int) -> void: 
 	health -= amount
 	reaction_to_damage()
+	SoundManager.sound_effect_player_received_damage()
 
 
 func reaction_to_damage() -> void:
@@ -252,6 +254,7 @@ func die() -> void:
 		death_object.position = position
 		# death_object.scale = scale
 		get_parent().add_child(death_object)
+		SoundManager.sound_effect_player_death()
 	queue_free()
 
 
@@ -278,3 +281,11 @@ func get_resources(amount: int, type: String):
 				GameManager.technique_reserve_ammo += amount
 		_: # Default
 			return
+
+
+func audio_atk_weak_play():
+	SoundManager.sound_effect_player_atk("weak")
+
+
+func audio_atk_strong_play():
+	SoundManager.sound_effect_player_atk("strong")

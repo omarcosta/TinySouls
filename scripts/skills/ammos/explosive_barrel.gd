@@ -12,3 +12,7 @@ func deal_damage() -> void:
 		if body.is_in_group("player"):
 			var player: Player = body
 			player.suffered_damage(damage_amount/2) # 50% do dano
+
+
+func audio_explosion_play():
+	SoundManager.sound_effect_explosive_barrel()

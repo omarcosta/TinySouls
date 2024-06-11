@@ -32,6 +32,5 @@ func _physics_process(delta):
 
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("player"):
-		print("Saiu")
 		player_position = GameManager.player_position
 		position = lerp(position,player_position,0.1)

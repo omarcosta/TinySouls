@@ -1,0 +1,62 @@
+[gd_scene load_steps=13 format=3 uid="uid://18m8o1fydmqv"]
+
+[ext_resource type="AudioStream" uid="uid://b04ymk2xnjrck" path="res://sounds/Fire Trance/GameMusic_1.wav" id="1_xj22h"]
+[ext_resource type="AudioStream" uid="uid://d3htbyy3vdk2i" path="res://sounds/Fire Trance/GameMusic_2.wav" id="2_55w0t"]
+[ext_resource type="AudioStream" uid="uid://ctqlr0naqq4u2" path="res://sounds/Fire Trance/GameMusic_3.wav" id="3_o8ay4"]
+[ext_resource type="AudioStream" uid="uid://djxw0yr3yl51t" path="res://sounds/Pixabay/AtkStrong.mp3" id="4_n1sv8"]
+[ext_resource type="AudioStream" uid="uid://7wehklvwu6xr" path="res://sounds/Pixabay/AtkWeak.mp3" id="5_tec2k"]
+[ext_resource type="AudioStream" uid="uid://cksee572agutq" path="res://sounds/Pixabay/warrior_roar.mp3" id="7_ringr"]
+[ext_resource type="AudioStream" uid="uid://cx388aidd2noa" path="res://sounds/Pixabay/explosive_barrel.mp3" id="8_5uxwi"]
+[ext_resource type="AudioStream" uid="uid://dijjc5r0yukiw" path="res://sounds/Pixabay/heartbeat.mp3" id="8_x2jir"]
+[ext_resource type="AudioStream" uid="uid://ewqvraooampq" path="res://sounds/Pixabay/take_damage.mp3" id="9_sy8ov"]
+[ext_resource type="AudioStream" uid="uid://ccfcyr5tnux6v" path="res://sounds/Pixabay/error.mp3" id="9_tpi4w"]
+[ext_resource type="AudioStream" uid="uid://dminajpppv41c" path="res://sounds/Pixabay/not_stamina.mp3" id="10_qtgsi"]
+[ext_resource type="AudioStream" uid="uid://dqyuij3b7pyjn" path="res://sounds/Pixabay/death.mp3" id="11_imk1t"]
+
+[node name="AudioTracks" type="Node2D"]
+
+[node name="____ environment ______" type="Node" parent="."]
+
+[node name="GameMusic_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_xj22h")
+volume_db = -20.0
+
+[node name="GameMusic_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_55w0t")
+volume_db = -20.0
+
+[node name="GameMusic_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o8ay4")
+volume_db = -20.0
+
+[node name="____ Player ______" type="Node" parent="."]
+
+[node name="AtkStrong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_n1sv8")
+
+[node name="AtkWeak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tec2k")
+
+[node name="ExplosiveBarrel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_5uxwi")
+
+[node name="WarriorRoar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ringr")
+
+[node name="Heart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_x2jir")
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_sy8ov")
+
+[node name="NotStamina" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_qtgsi")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_imk1t")
+
+[node name="____ System ______" type="Node" parent="."]
+
+[node name="Error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_tpi4w")
+volume_db = -10.0
