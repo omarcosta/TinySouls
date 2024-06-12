@@ -23,6 +23,7 @@ var audio_death: AudioStreamPlayer
 
 # System
 var audio_system_error: AudioStreamPlayer
+var audio_system_pop: AudioStreamPlayer
 
 
 func _ready():
@@ -47,6 +48,7 @@ func _ready():
 	
 	# System
 	audio_system_error = audio_tracks.get_node("Error")
+	audio_system_pop = audio_tracks.get_node("Pop")
 	
 
 func _process(delta):
@@ -56,6 +58,12 @@ func _process(delta):
 			environment_music_play()
 		# Sons de batida de coração
 		heartbeats()
+	else: 
+		audio_game_track_1.stop()
+		audio_game_track_2.stop()
+		audio_game_track_3.stop()
+		audio_heartbeats.stop()
+		
 
 
 func environment_music_play() -> void:
@@ -125,3 +133,8 @@ func sound_effect_player_death():
 func sound_effect_error():
 	if not mute:
 		audio_system_error.play()
+
+
+func sound_effect_pop():
+	if not mute:
+		audio_system_pop.play()

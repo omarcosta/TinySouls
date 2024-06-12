@@ -16,3 +16,6 @@ func deal_damage() -> void:
 
 func audio_explosion_play():
 	SoundManager.sound_effect_explosive_barrel()
+
+func audio_pop_barrel():
+	SoundManager.sound_effect_pop()
