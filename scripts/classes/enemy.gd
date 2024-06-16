@@ -26,11 +26,15 @@ func suffered_damage(amount: int) -> void:
 	# View Damage
 	var view_damage = view_damage_prefab.instantiate()
 	view_damage.value = amount
-	if %ViewDamageMarker:
-		view_damage.global_position = %ViewDamageMarker.global_position
-	else:
-		view_damage.global_position = global_position
+	view_damage.global_position = $ViewDamageMarker.global_position
+	# print("Enemy: ",global_position," | Mark: ", $ViewDamageMarker.global_position, " Label: ", view_damage.position)
+	#if %ViewDamageMarker:
+		#view_damage.global_position = %ViewDamageMarker.global_position
+	#else:
+		#view_damage.global_position = global_position
+	#
 	get_parent().add_child(view_damage) # Coloca a cena no node que executa o script 
+	#add_child(view_damage) # Coloca a cena no node que executa o script
 	
 	# Enemy death
 	if health <= 0:

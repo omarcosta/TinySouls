@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://bh2v3l50pcjvu"]
 
 [ext_resource type="Script" path="res://scripts/classes/player.gd" id="1_t6sr0"]
-[ext_resource type="Texture2D" uid="uid://crms0l7y44ehq" path="res://Warrior_red.png" id="2_sa5wr"]
+[ext_resource type="Texture2D" uid="uid://csruxej4anhqo" path="res://addons/Tiny Swords/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="2_w35ai"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ca1di"]
-radius = 36.7696
+radius = 21.095
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sd2po"]
 radius = 114.039
@@ -365,14 +365,14 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-z_index = 10
+y_sort_enabled = true
 script = ExtResource("1_t6sr0")
 health = 45
 
 [node name="HitArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
-position = Vector2(1, -28)
+position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_ca1di")
 debug_color = Color(0.968627, 0.168627, 0.168627, 0.243137)
 
@@ -385,7 +385,7 @@ debug_color = Color(0.764706, 0, 0.141176, 0.0431373)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
-texture = ExtResource("2_sa5wr")
+texture = ExtResource("2_w35ai")
 hframes = 6
 vframes = 8
 

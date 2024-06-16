@@ -48,7 +48,9 @@ func _ready():
 
 
 func _process(delta) -> void:
-	GameManager.player_position = position
+	#GameManager.player_position = position
+	GameManager.player_position = global_position
+	#print("Posição local: ", position, " | Posição global: ", global_position)
 	GameManager.player_life_points = health
 	GameManager.player_stamina_points = stamina
 	GameManager.player_magic_points = magic
@@ -195,7 +197,8 @@ func deal_damage_to_enemies(type: String) -> void:
 	for body in bodies:
 		if body.is_in_group("enemies"):
 			var enemy: Enemy = body
-			var direction_to_enemy = (enemy.position - position).normalized()
+			# var direction_to_enemy = (enemy.position - position).normalized()
+			var direction_to_enemy = (enemy.global_position - global_position).normalized()
 			var attack_direction: Vector2
 			match attacking_orientation:
 				"UP":

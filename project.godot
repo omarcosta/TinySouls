@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Tiny Souls"
-run/main_scene="res://scenes/tests/test_player.tscn"
+run/main_scene="res://scenes/stages/demo.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://logo.jpeg"
 
 [autoload]
 
-GameManager="*res://scripts/game_manager.gd"
-SoundManager="*res://scripts/sound_manager.gd"
+GameManager="*res://scripts/system/game_manager.gd"
+SoundManager="*res://scripts/system/sound_manager.gd"
 
 [input]
 

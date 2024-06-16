@@ -56,14 +56,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2yu7j"]
-radius = 17.0
-height = 52.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_88j37"]
+radius = 12.0
 
 [node name="Pawn" type="CharacterBody2D" groups=["enemies"]]
 motion_mode = 1
 script = ExtResource("1_5vost")
-health = 5
+health = 6
 damage = 5
 speed = 0.7
 view_damage_prefab = ExtResource("2_etbwc")
@@ -77,11 +76,10 @@ frame = 5
 frame_progress = 0.739759
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -25)
-shape = SubResource("CapsuleShape2D_2yu7j")
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_88j37")
 
 [node name="ViewDamageMarker" type="Marker2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(0, -50)
 
 [node name="===== Scripts =====" type="Node" parent="."]

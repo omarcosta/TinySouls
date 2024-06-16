@@ -30,6 +30,7 @@ extends Node
 func _process(delta):
 	player_lives()
 	
+	
 
 func player_lives() -> void:
 	if player_life_points <= 0:
