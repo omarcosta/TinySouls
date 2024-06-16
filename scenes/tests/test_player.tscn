@@ -1609,6 +1609,7 @@ layer_3/tile_data = PackedInt32Array(393223, 393216, 1, 393224, 393216, 1, 32768
 [node name="Game" type="Node2D" parent="."]
 
 [node name="Player" parent="Game" instance=ExtResource("7_swtio")]
+z_index = 2
 position = Vector2(44.0129, 113.269)
 
 [node name="Technique" parent="Game/Player" instance=ExtResource("3_4fvks")]

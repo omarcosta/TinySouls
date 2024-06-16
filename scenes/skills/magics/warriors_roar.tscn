@@ -64,7 +64,7 @@ _data = {
 radius = 9.28814
 
 [node name="WarriorsRoar" type="Node2D"]
-z_index = 9
+show_behind_parent = true
 z_as_relative = false
 position = Vector2(0, -30)
 script = ExtResource("1_w6g7h")

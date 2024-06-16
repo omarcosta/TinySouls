@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/skills/player_technique.gd" id="1_eddr0"]
 [ext_resource type="PackedScene" uid="uid://c1lt5mpy4st3i" path="res://scenes/skills/ammos/explosive_barrel.tscn" id="2_vjqrt"]
 
-[node name="Technique" type="Node"]
+[node name="Technique" type="Node2D"]
 script = ExtResource("1_eddr0")
 technique_prefab = ExtResource("2_vjqrt")
 damage = 25

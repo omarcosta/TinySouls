@@ -1,0 +1,15 @@
+z-index 0
+	Player
+	enemies
+	Decorations (Y sort enabled)
+	skill magic
+
+z-index 1
+	Skill Technique
+	
+z-index Stage < 0
+	water -4
+	water effect -3
+	rocks -2
+	gass -1
+	Decorations 0 (Y sort enabled)

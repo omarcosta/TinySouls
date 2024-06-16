@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://scripts/skills/player_magic.gd" id="1_s2ihr"]
 [ext_resource type="PackedScene" uid="uid://dky4hcknkynas" path="res://scenes/skills/magics/warriors_roar.tscn" id="2_8scar"]
 
-[node name="Magic" type="Node"]
+[node name="Magic" type="Node2D"]
+show_behind_parent = true
 script = ExtResource("1_s2ihr")
 magic_prefab = ExtResource("2_8scar")
 damage = 18

@@ -1,0 +1,171 @@
+[gd_scene load_steps=15 format=3 uid="uid://djixcjc7au4g5"]
+
+[ext_resource type="Script" path="res://scripts/stages/zodian_plains.gd" id="1_8sbmk"]
+[ext_resource type="PackedScene" uid="uid://bh2v3l50pcjvu" path="res://scenes/players/player.tscn" id="2_uikpr"]
+[ext_resource type="PackedScene" uid="uid://bvastevqo1038" path="res://scenes/cams/camera_2d_smoothing.tscn" id="3_ctrdm"]
+[ext_resource type="PackedScene" uid="uid://b3w1oc10pir17" path="res://scenes/skills/skill_technique.tscn" id="4_sa848"]
+[ext_resource type="PackedScene" uid="uid://dqqg3jl514eyv" path="res://scenes/skills/skill_magic.tscn" id="5_ahmiu"]
+[ext_resource type="PackedScene" uid="uid://c4rum7olsmtsh" path="res://scenes/misc/block_point.tscn" id="6_sqa8y"]
+[ext_resource type="PackedScene" uid="uid://ckn3k7ymoptcl" path="res://scenes/deco/bush.tscn" id="7_068tc"]
+[ext_resource type="Script" path="res://scripts/mechanics/spawn_mobs_in_path_points.gd" id="7_p1wb3"]
+[ext_resource type="PackedScene" uid="uid://bm5fo0cn3kop6" path="res://scenes/enemys/pawn.tscn" id="7_qs6k4"]
+[ext_resource type="PackedScene" uid="uid://bi3id4870nmwm" path="res://scenes/stages/tile_map/tile_map_zodian_plains.tscn" id="7_tf60f"]
+[ext_resource type="PackedScene" uid="uid://dtdsisbltmd1c" path="res://scenes/ui/hud_main.tscn" id="8_jwhh6"]
+
+[sub_resource type="Curve2D" id="Curve2D_ouk14"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 655, 77, 0, 0, 0, 0, 671, 517, 0, 0, 0, 0, 368, 443, 0, 0, 0, 0, -18, 587)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_skg6n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1402, 181, 0, 0, 0, 0, 2777, 142, 0, 0, 0, 0, 2974, 690, 0, 0, 0, 0, 3036, 1437, 0, 0, 0, 0, 2826, 1760, 0, 0, 0, 0, 2470, 1771, 0, 0, 0, 0, 1924, 1841, 0, 0, 0, 0, 1352, 1705, 0, 0, 0, 0, 1610, 1620, 0, 0, 0, 0, 1443, 1134, 0, 0, 0, 0, 1347, 754, 0, 0, 0, 0, 1530, 419, 0, 0, 0, 0, 2153, 288, 0, 0, 0, 0, 2527, 424, 0, 0, 0, 0, 2525, 757, 0, 0, 0, 0, 2763, 1112, 0, 0, 0, 0, 2237, 1404, 0, 0, 0, 0, 1814, 1252, 0, 0, 0, 0, 2155, 844, 0, 0, 0, 0, 1864, 642)
+}
+point_count = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icpqv"]
+size = Vector2(1859, 1884)
+
+[node name="ZodianPlains" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_8sbmk")
+
+[node name="Camera2DSmoothing" parent="." instance=ExtResource("3_ctrdm")]
+position = Vector2(321, 222)
+
+[node name="TileMap" parent="." instance=ExtResource("7_tf60f")]
+position = Vector2(-554, -306)
+
+[node name="Player" parent="." instance=ExtResource("2_uikpr")]
+position = Vector2(317, 250)
+health = 100
+
+[node name="Technique" parent="Player" instance=ExtResource("4_sa848")]
+
+[node name="Magic" parent="Player" instance=ExtResource("5_ahmiu")]
+modulate = Color(1, 1, 1, 0.0470588)
+show_behind_parent = false
+z_index = -4
+z_as_relative = false
+
+[node name="WaveOne" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(143, 108)
+
+[node name="Path2D" type="Path2D" parent="WaveOne"]
+y_sort_enabled = true
+curve = SubResource("Curve2D_ouk14")
+script = ExtResource("7_p1wb3")
+mobs_list = Array[PackedScene]([ExtResource("7_qs6k4")])
+mobs_per_minute = 12.0
+mobs_total = 10
+
+[node name="BlockPoint" parent="WaveOne" instance=ExtResource("6_sqa8y")]
+position = Vector2(974, 199)
+need_to_defeat = 10
+
+[node name="bush" type="Node2D" parent="WaveOne"]
+y_sort_enabled = true
+position = Vector2(-143, -108)
+
+[node name="Bush" parent="WaveOne/bush" instance=ExtResource("7_068tc")]
+position = Vector2(797, 202)
+
+[node name="Bush2" parent="WaveOne/bush" instance=ExtResource("7_068tc")]
+position = Vector2(815, 641)
+
+[node name="Bush3" parent="WaveOne/bush" instance=ExtResource("7_068tc")]
+position = Vector2(515, 566)
+
+[node name="Bush4" parent="WaveOne/bush" instance=ExtResource("7_068tc")]
+position = Vector2(123, 710)
+
+[node name="WaveSurvival" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="bush" type="Node2D" parent="WaveSurvival"]
+y_sort_enabled = true
+
+[node name="Bush" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(1402, 195)
+
+[node name="Bush2" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(2825, 1769)
+
+[node name="Bush3" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(1607, 1628)
+
+[node name="Bush4" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(1345, 764)
+
+[node name="Bush5" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(2775, 152)
+
+[node name="Bush6" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(2973, 700)
+
+[node name="Bush7" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(1920, 1847)
+
+[node name="Bush8" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(1352, 1716)
+
+[node name="Bush9" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(1443, 1141)
+
+[node name="Bush10" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(2523, 768)
+
+[node name="Bush11" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(1864, 657)
+
+[node name="Bush12" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(2234, 1414)
+
+[node name="Bush13" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(2762, 1125)
+
+[node name="Bush14" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(2153, 298)
+
+[node name="Bush15" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(1810, 1263)
+
+[node name="Bush16" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(2469, 1778)
+
+[node name="Bush17" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(1531, 429)
+
+[node name="Bush18" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(2153, 856)
+
+[node name="Bush19" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(2526, 439)
+
+[node name="Bush20" parent="WaveSurvival/bush" instance=ExtResource("7_068tc")]
+position = Vector2(3034, 1445)
+
+[node name="Path2D" type="Path2D" parent="WaveSurvival"]
+y_sort_enabled = true
+curve = SubResource("Curve2D_skg6n")
+script = ExtResource("7_p1wb3")
+mobs_list = Array[PackedScene]([ExtResource("7_qs6k4")])
+
+[node name="Area2D" type="Area2D" parent="WaveSurvival"]
+position = Vector2(1271, 47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaveSurvival/Area2D"]
+position = Vector2(936.5, 927)
+shape = SubResource("RectangleShape2D_icpqv")
+
+[node name="Timer" type="Timer" parent="WaveSurvival"]
+wait_time = 7.0
+autostart = true
+
+[node name="HUD" parent="." instance=ExtResource("8_jwhh6")]
+
+[connection signal="body_entered" from="WaveSurvival/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="WaveSurvival/Timer" to="." method="_on_timer_timeout"]

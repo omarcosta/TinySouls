@@ -19,7 +19,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	
 	player_position = GameManager.player_position
-	input_direction = player_position - enemy.position  
+	# input_direction = player_position - enemy.position
+	input_direction = player_position - enemy.global_position   
 	target_velocity = input_direction.normalized() * enemy.speed * 100.0
 	
 	if is_moving:

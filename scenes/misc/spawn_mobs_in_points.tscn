@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxeykc6q5fyqp"]
+
+[ext_resource type="Script" path="res://scripts/mechanics/spawn_mobs_in_path_points.gd" id="1_rarh5"]
+
+[sub_resource type="Curve2D" id="Curve2D_hu5hj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 63, 53, 0, 0, 0, 0, 896, 49, 0, 0, 0, 0, 887, 693, 0, 0, 0, 0, 326, 382)
+}
+point_count = 4
+
+[node name="SpawnMobs" type="Path2D"]
+curve = SubResource("Curve2D_hu5hj")
+script = ExtResource("1_rarh5")
