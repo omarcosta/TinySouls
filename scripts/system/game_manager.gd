@@ -2,6 +2,7 @@ extends Node
 
 # Game control
 @onready var gameover = false
+# @onready var activate_gameover_screen = false
 
 # Player
 @onready var player_position: Vector2 # Posição global do jogador
@@ -24,28 +25,37 @@ extends Node
 @onready var technique_max_reserver_ammo: int = 0
 
 # Stage
-@onready var waves: int = 0 # Ondas de inimigos
+#@onready var waves: int = 0 # Ondas de inimigos
 @onready var enemies_defeated: int = 0 # Quantidade de inimigos derrotados
+@onready var game_time: String = "00:00"
+@onready var game_time_seconds: int = 0
+@onready var game_time_minutes: int = 0
 
 func _process(delta):
-	player_lives()
-	
+	# player_lives()
+	#if activate_gameover_screen:
+		#var gameover_scene_prefab = preload("res://scenes/ui/ui_game_over.tscn")
+		#var gameover_scene = gameover_scene_prefab.instantiate()
+		#get_parent().add_child(gameover_scene)
+		#activate_gameover_screen = false
+		pass
 	
 
 func player_lives() -> void:
 	if player_life_points <= 0:
 		gameover = true
+		# activate_gameover_screen = true
 
 
-
-#func _input(event):
-	#if event is InputEventKey:
-		#if event.pressed and event.keycode == KEY_CTRL:
-			#reload_scene()
-#
-#func reload_scene():
-	## Caminho da cena que você deseja recarregar
-	#var scene_path = "res://scenes/tests/test_player.tscn"
-	#
-	## Usa o método change_scene para recarregar a cena
-	#get_tree().change_scene_to_file(scene_path)
+func reset():
+	gameover = false
+	player_position = Vector2.ZERO
+	magic_available = true
+	technique_available = true
+	enemies_defeated = 0
+	game_time = "00:00"
+	game_time_seconds = 0
+	game_time_minutes = 0
+	# Reset signal
+	# for connection in signal_name.get_connections():
+		#signal_name.desconnect(connection)

@@ -1,7 +1,7 @@
 extends Node
 
 @export var mob_spawner: MobSpawner
-@export var initial_spawn_rate: float = 60.0 # Valor inicial do MobSpawner
+@export var initial_spawn_rate: float = 10.0 # Valor inicial do MobSpawner
 @export var spawn_rate_per_minute: float = 30.0 # incremento do MobSpawner por minuto
 @export_category("Wave intensity")
 @export var wave_duration: float = 20.0 # Duração da onda
@@ -12,6 +12,9 @@ var time: float = 0.0
 
 
 func _process(delta):
+	# Game Over
+	if GameManager.gameover == true : return 
+	
 	time += delta
 	
 	# Dificuldade linear com passsar do tempo

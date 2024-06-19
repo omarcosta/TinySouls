@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2jwgggr4l4cc"]
+[gd_scene load_steps=13 format=3 uid="uid://c2jwgggr4l4cc"]
 
+[ext_resource type="Script" path="res://scripts/stages/demo.gd" id="1_8kpdx"]
 [ext_resource type="TileSet" uid="uid://cdqtpmua1ci2n" path="res://scenes/stages/tiles/demo_tyny_sword.tres" id="1_ip5ya"]
 [ext_resource type="Script" path="res://scripts/system/difficulty_manager.gd" id="2_1x6w4"]
 [ext_resource type="PackedScene" uid="uid://clpbutbb5yiiu" path="res://scenes/misc/mob_spawner.tscn" id="5_2vomi"]
@@ -20,6 +21,7 @@ size = Vector2(10668, 1331)
 
 [node name="Demo" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_8kpdx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -74,26 +76,27 @@ position = Vector2(-19, 2963)
 shape = SubResource("RectangleShape2D_e5n7e")
 debug_color = Color(0.980392, 0.109804, 0.239216, 0.419608)
 
-[node name="DifficultSystem" type="Node" parent="." node_paths=PackedStringArray("mob_spawner")]
+[node name="DifficultySystem" type="Node" parent="." node_paths=PackedStringArray("mob_spawner")]
 script = ExtResource("2_1x6w4")
-mob_spawner = NodePath("../SpawnMobs")
-initial_spawn_rate = 10.0
-spawn_rate_per_minute = 20.0
-wave_duration = 15.0
-break_intensity_min = 0.3
+mob_spawner = NodePath("../Enemies/SpawnMobs")
+break_intensity_min = 0.45
 
-[node name="SpawnMobs" parent="." instance=ExtResource("5_2vomi")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="SpawnMobs" parent="Enemies" instance=ExtResource("5_2vomi")]
 mobs_list = Array[PackedScene]([ExtResource("6_6eybj")])
 mobs_per_minute = 50.0
 
 [node name="Player" parent="." instance=ExtResource("27_km2k5")]
+health = 100
 
 [node name="Technique" parent="Player" instance=ExtResource("28_cnwmu")]
+damage = 30
 
 [node name="Magic" parent="Player" instance=ExtResource("29_1jife")]
 
 [node name="RemoteTransform2D - SpawnMobs" type="RemoteTransform2D" parent="Player"]
-remote_path = NodePath("../../SpawnMobs")
+remote_path = NodePath("../../Enemies/SpawnMobs")
 update_rotation = false
 update_scale = false
 

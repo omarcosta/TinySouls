@@ -20,6 +20,10 @@ config/icon="res://logo.jpeg"
 GameManager="*res://scripts/system/game_manager.gd"
 SoundManager="*res://scripts/system/sound_manager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 move_left={

@@ -6,6 +6,13 @@ extends Control
 
 
 func _process(delta):
+	if GameManager.gameover == true : 
+		# Update the time in the GameManager
+		GameManager.game_time = "%02d:%02d" % [minutes, seconds]
+		GameManager.game_time_minutes = minutes
+		GameManager.game_time_seconds = seconds
+		queue_free()
+	
 	if seconds >= 60:
 		minutes += 1
 		seconds = 0

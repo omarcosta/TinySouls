@@ -10,6 +10,10 @@ var interval: float = 0.0 # Mobs por segundo
 var cooldown: float = 0.0 # Temporizador
 
 func _process(delta: float):
+	# se o jogo acabar, mata todos os monstros
+	if GameManager.gameover == true:
+		get_parent().queue_free()
+	
 	# Temporizador
 	cooldown -= delta
 	if cooldown > 0: return

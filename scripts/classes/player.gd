@@ -258,6 +258,8 @@ func die() -> void:
 		# death_object.scale = scale
 		get_parent().add_child(death_object)
 		SoundManager.sound_effect_player_death()
+		GameManager.gameover = true
+		# GameManager.activate_gameover_screen = true
 	queue_free()
 
 

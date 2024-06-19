@@ -11,7 +11,7 @@ func deal_damage() -> void:
 			enemy.suffered_damage(damage_amount) # 100% do dano
 		if body.is_in_group("player"):
 			var player: Player = body
-			player.suffered_damage(damage_amount/2) # 50% do dano
+			player.suffered_damage(damage_amount*0.75) # 75% do dano
 
 
 func audio_explosion_play():

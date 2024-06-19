@@ -2,7 +2,7 @@ extends Node
 
 @onready var audio_tracks_scene = preload("res://scenes/audio_tracks.tscn")
 
-var mute: bool = true
+var mute: bool = false
 
 # Game audio
 var audio_tracks: Node
